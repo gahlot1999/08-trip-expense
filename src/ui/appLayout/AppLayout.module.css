@@ -1,10 +1,12 @@
 .main {
   height: 100dvh;
   background-color: var(--clr-primary);
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
-  height: 25%;
+  height: 20dvh;
   display: flex;
   align-items: center;
 }
@@ -13,7 +15,6 @@
   flex-grow: 1;
   text-transform: uppercase;
   text-align: center;
-  padding-block: 4rem;
   font-size: 5rem;
   letter-spacing: 1.5rem;
 }
@@ -24,11 +25,11 @@
 }
 
 .container {
-  height: 100%;
+  flex-grow: 1;
   background-color: var(--clr-light);
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top-left-radius: 3rem;
-  border-top-right-radius: 3rem;
 }
