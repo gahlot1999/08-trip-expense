@@ -1,0 +1,40 @@
+.home {
+  height: 100%;
+  background-image: linear-gradient(
+      0deg,
+      hsl(var(--clr-primary-hsl), 0.3),
+      hsl(var(--clr-primary-hsl), 0.3)
+    ),
+    url('/public/main-bg.jpg');
+  background-size: cover;
+  background-position: top;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8rem;
+}
+
+.home button {
+  width: 60%;
+  height: 6rem;
+
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  color: var(--clr-light);
+  border: none;
+  border-radius: 1rem;
+
+  background-color: hsl(var(--clr-secondary-hsl), 0.75);
+  transition: all 0.3s;
+
+  outline-color: var(--clr-light);
+}
+
+.home button:hover {
+  cursor: pointer;
+  box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;
+  translate: 0 -0.4rem;
+}
