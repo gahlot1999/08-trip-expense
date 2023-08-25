@@ -1,0 +1,10 @@
+.main {
+  height: 100dvh;
+  background-color: var(--clr-primary);
+}
+
+.main h1 {
+  text-transform: uppercase;
+  text-align: center;
+  padding-block: 5rem;
+}

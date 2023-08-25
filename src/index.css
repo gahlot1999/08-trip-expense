@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'Lato';
+  font-weight: 200;
+  src: url('./assets/font/lato-light-webfont.woff2') format('woff2'),
+    url('./assets/font/lato-light-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  src: url('./assets/font/lato-regular-webfont.woff2') format('woff2'),
+    url('./assets/font/lato-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 600;
+  src: url('./assets/font/lato-bold-webfont.woff2') format('woff2'),
+    url('./assets/font/lato-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 800;
+  src: url('./assets/font/lato-black-webfont.woff2') format('woff2'),
+    url('./assets/font/lato-black-webfont.woff') format('woff');
+}
+
+:root {
+  --clr-primary-hsl: 266.2, 100%, 60%;
+  --clr-secondary-hsl: 156.9, 89.9%, 42.5%;
+  --clr-light-hsl: 0, 5.3%, 96.3%;
+  --clr-gray-hsl: 0, 0%, 76.9%;
+
+  --clr-primary: hsl(266.2, 100%, 60%);
+  --clr-secondary: hsl(156.9, 89.9%, 42.5%);
+  --clr-light: hsl(0, 5.3%, 96.3%);
+  --clr-gray: hsl(0, 0%, 76.9%);
+}
+
+/**************** CSS RESET ****************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--clr-light);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/**************** CSS RESET END ****************/
