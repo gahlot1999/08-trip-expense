@@ -3,8 +3,32 @@
   background-color: var(--clr-primary);
 }
 
+.heading {
+  height: 25%;
+  display: flex;
+  align-items: center;
+}
+
 .main h1 {
+  flex-grow: 1;
   text-transform: uppercase;
   text-align: center;
-  padding-block: 5rem;
+  padding-block: 4rem;
+  font-size: 5rem;
+  letter-spacing: 1.5rem;
+}
+
+.main h1::after {
+  content: '';
+  margin-right: -1.5rem;
+}
+
+.container {
+  height: 100%;
+  background-color: var(--clr-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
 }

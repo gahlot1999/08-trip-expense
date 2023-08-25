@@ -5,8 +5,12 @@ import { Outlet } from 'react-router-dom';
 function AppLayout() {
   return (
     <main className={styles.main}>
-      <h1>Travel</h1>
-      <Outlet />
+      <div className={styles.heading}>
+        <h1>Travel</h1>
+      </div>
+      <div className={styles.container}>
+        <Outlet />
+      </div>
     </main>
   );
 }
