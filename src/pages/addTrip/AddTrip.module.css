@@ -2,7 +2,7 @@
   position: absolute;
   margin-top: 1.8rem;
   margin-left: 2.2rem;
-  padding: 0rem 1.4rem;
+  padding: 0 2rem;
   background-color: hsl(var(--clr-secondary-hsl), 0.6);
   border: none;
   border-radius: 100rem;
@@ -12,7 +12,6 @@
 .backBtn:hover {
   cursor: pointer;
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
-  padding: 0 1.7rem;
 }
 
 .backBtn > svg {
@@ -21,7 +20,19 @@
 }
 
 .backBtn:hover > svg {
-  transform: translateX(-20%);
+  animation: arrowMove 1s linear infinite;
+}
+
+@keyframes arrowMove {
+  0% {
+    transform: translateX(100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .addTripForm {
@@ -33,7 +44,7 @@
 }
 
 .addTripForm form > div:not(:last-child) {
-  margin-bottom: 3.4rem;
+  margin-bottom: 3.6rem;
 }
 
 .fieldGroup {
@@ -42,11 +53,11 @@
 
 .fieldGroup input {
   border-radius: 0;
-  -webkit-border-radius: 0;
+  /* -webkit-border-radius: 0; */
   width: 100%;
   border: none;
   outline: none;
-  padding: .3rem 0.5rem;
+  padding: 0.3rem 0.5rem;
   color: var(--clr-dark);
   border-bottom: 2px solid var(--clr-primary);
   background-color: transparent;
