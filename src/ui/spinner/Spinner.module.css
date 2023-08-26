@@ -1,0 +1,28 @@
+.spinner {
+  display: block;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin: auto;
+}
+
+.spinner::after {
+  content: '';
+  display: inline-block;
+  height: 2.4rem;
+  width: 2.4rem;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+    border: 0.2rem solid var(--clr-primary);
+    opacity: 1;
+  }
+  100% {
+    rotate: 360deg;
+    border: 1rem solid var(--clr-primary);
+    opacity: 0.1;
+  }
+}

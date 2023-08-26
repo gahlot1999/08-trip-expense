@@ -1,40 +1,3 @@
-.backBtn {
-  position: absolute;
-  margin-top: 1.8rem;
-  margin-left: 2.2rem;
-  padding: 0 2rem;
-  background-color: hsl(var(--clr-secondary-hsl), 0.6);
-  border: none;
-  border-radius: 100rem;
-  transition: all 0.3s;
-}
-
-.backBtn:hover {
-  cursor: pointer;
-  background-color: hsl(var(--clr-secondary-hsl), 0.9);
-}
-
-.backBtn > svg {
-  fill: var(--clr-light);
-  transition: all 0.3s;
-}
-
-.backBtn:hover > svg {
-  animation: arrowMove 1s linear infinite;
-}
-
-@keyframes arrowMove {
-  0% {
-    transform: translateX(100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
 .addTripForm {
   width: 75%;
   margin-top: 10rem;
@@ -121,6 +84,10 @@
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
   box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;
   translate: 0 -0.4rem;
+}
+
+.dangerBtn {
+  background-color: hsl(var(--clr-danger-hsl), 0.85) !important;
 }
 
 .friendsContainer {

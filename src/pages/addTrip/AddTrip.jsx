@@ -1,25 +1,19 @@
-import { useNavigate } from 'react-router-dom';
 import styles from './AddTrip.module.css';
-import { IoMdArrowRoundBack } from 'react-icons/io';
 import { TiDelete } from 'react-icons/ti';
 import { useState } from 'react';
+import BackBtn from '../../ui/backBtn/BackBtn';
+import Spinner from '../../ui/spinner/Spinner';
+import { useCreateTrip } from '../../hooks/useCreateTrip';
 
 function AddTrip() {
-  const [showAddFriend, setShowAddFriend] = useState(false);
-  const [tripPlace, setTripPlace] = useState('Jaipur');
-  const [tripDesc, setTripDesc] = useState('4 days trip in jaipur');
-  const [friend, setFriend] = useState('');
-  const [friends, setFriends] = useState([
-    'Ashish',
-    'Hitesh',
-    'Kritika',
-    'Mayank',
-  ]);
+  const { mutate: mutateCreateTrip, isLoading: isCreatingTrip } =
+    useCreateTrip();
 
-  const navigate = useNavigate();
-  function handleBackClick() {
-    navigate(-1);
-  }
+  const [showAddFriend, setShowAddFriend] = useState(false);
+  const [tripPlace, setTripPlace] = useState('');
+  const [tripDesc, setTripDesc] = useState('');
+  const [friend, setFriend] = useState('');
+  const [friends, setFriends] = useState([]);
 
   function handleAddFriend(e) {
     e.preventDefault();
@@ -30,7 +24,13 @@ function AddTrip() {
 
   function handleAddTrip(e) {
     e.preventDefault();
-    console.log(tripPlace, tripDesc, friends);
+    const newTrip = {
+      place: tripPlace,
+      description: tripDesc,
+      friends,
+    };
+    // addTripData(newTrip);
+    mutateCreateTrip(newTrip);
   }
 
   function handleShowHideFriend(e) {
@@ -44,13 +44,12 @@ function AddTrip() {
 
   return (
     <>
-      <button className={styles.backBtn} onClick={handleBackClick}>
-        <IoMdArrowRoundBack size={24} />
-      </button>
+      <BackBtn size={24} />
       <div className={styles.addTripForm}>
         <form>
           <div className={styles.fieldGroup}>
             <input
+              disabled={isCreatingTrip}
               type='text'
               id='tripPlace'
               placeholder='Trip Place'
@@ -64,6 +63,7 @@ function AddTrip() {
 
           <div className={styles.fieldGroup}>
             <input
+              disabled={isCreatingTrip}
               type='text'
               id='tripDesc'
               placeholder='Trip Description'
@@ -95,6 +95,8 @@ function AddTrip() {
           {showAddFriend && (
             <div className={styles.fieldGroup}>
               <input
+                disabled={isCreatingTrip}
+                autoFocus
                 type='text'
                 id='friend'
                 placeholder='Add Friend'
@@ -108,13 +110,20 @@ function AddTrip() {
           )}
 
           <div className={styles.addTripButtonGroup}>
-            {showAddFriend && <button onClick={handleAddFriend}>Add</button>}
+            {showAddFriend && (
+              <button onClick={handleAddFriend}>Add Friend</button>
+            )}
 
-            <button onClick={handleShowHideFriend}>
+            <button
+              onClick={handleShowHideFriend}
+              className={!showAddFriend ? '' : styles.dangerBtn}
+            >
               {!showAddFriend ? 'Add Friend' : 'Close'}
             </button>
 
-            <button onClick={handleAddTrip}>Add Trip</button>
+            <button onClick={handleAddTrip}>
+              {isCreatingTrip ? <Spinner /> : 'Add Trip'}
+            </button>
           </div>
         </form>
       </div>
