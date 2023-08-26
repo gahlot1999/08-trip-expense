@@ -6,10 +6,15 @@ import { useState } from 'react';
 
 function AddTrip() {
   const [showAddFriend, setShowAddFriend] = useState(false);
-  const [tripPlace, setTripPlace] = useState('');
-  const [tripDesc, setTripDesc] = useState('');
+  const [tripPlace, setTripPlace] = useState('Jaipur');
+  const [tripDesc, setTripDesc] = useState('4 days trip in jaipur');
   const [friend, setFriend] = useState('');
-  const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState([
+    'Ashish',
+    'Hitesh',
+    'Kritika',
+    'Mayank',
+  ]);
 
   const navigate = useNavigate();
   function handleBackClick() {
