@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import styles from './AddTrip.module.css';
 import { IoMdArrowRoundBack } from 'react-icons/io';
+import { TiDelete } from 'react-icons/ti';
 import { useState } from 'react';
 
 function AddTrip() {
@@ -30,6 +31,10 @@ function AddTrip() {
   function handleShowHideFriend(e) {
     e.preventDefault();
     setShowAddFriend((curr) => !curr);
+  }
+
+  function handleDeleteFriend(data) {
+    setFriends((curr) => curr.filter((el) => el !== data));
   }
 
   return (
@@ -67,10 +72,18 @@ function AddTrip() {
 
           {friends.length > 0 && (
             <div>
-              Friends:{' '}
-              {friends.map((el) => (
-                <span key={el}>{el}</span>
-              ))}
+              <p className={styles.friendsHeading}>Friends</p>
+              <div className={styles.friendsContainer}>
+                {friends.map((el) => (
+                  <span
+                    onClick={() => handleDeleteFriend(el)}
+                    className={styles.friendName}
+                    key={el}
+                  >
+                    {el} <TiDelete />
+                  </span>
+                ))}
+              </div>
             </div>
           )}
 
