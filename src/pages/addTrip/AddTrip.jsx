@@ -65,6 +65,15 @@ function AddTrip() {
             </label>
           </div>
 
+          {friends.length > 0 && (
+            <div>
+              Friends:{' '}
+              {friends.map((el) => (
+                <span key={el}>{el}</span>
+              ))}
+            </div>
+          )}
+
           {showAddFriend && (
             <div className={styles.fieldGroup}>
               <input

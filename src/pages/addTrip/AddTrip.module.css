@@ -40,6 +40,7 @@
   margin-top: 10rem;
   margin-inline: auto;
   background-color: var(--clr-light);
+  color: var(--clr-gray-1);
   font-size: 1.8rem;
 }
 
