@@ -5,6 +5,10 @@ import { useState } from 'react';
 
 function AddTrip() {
   const [showAddFriend, setShowAddFriend] = useState(false);
+  const [tripPlace, setTripPlace] = useState('');
+  const [tripDesc, setTripDesc] = useState('');
+  const [friend, setFriend] = useState('');
+  const [friends, setFriends] = useState([]);
 
   const navigate = useNavigate();
   function handleBackClick() {
@@ -13,12 +17,14 @@ function AddTrip() {
 
   function handleAddFriend(e) {
     e.preventDefault();
-    console.log('Handle Add Friend');
+    setFriends((arr) => [...arr, friend]);
+    setFriend('');
+    setShowAddFriend(false);
   }
 
   function handleAddTrip(e) {
     e.preventDefault();
-    console.log('Handle Add Trip');
+    console.log(tripPlace, tripDesc, friends);
   }
 
   function handleShowHideFriend(e) {
@@ -34,14 +40,26 @@ function AddTrip() {
       <div className={styles.addTripForm}>
         <form>
           <div className={styles.fieldGroup}>
-            <input type='text' id='tripPlace' placeholder='Trip Place' />
+            <input
+              type='text'
+              id='tripPlace'
+              placeholder='Trip Place'
+              value={tripPlace}
+              onChange={(e) => setTripPlace(e.target.value)}
+            />
             <label htmlFor='tripPlace' className={styles.label}>
               Trip Place
             </label>
           </div>
 
           <div className={styles.fieldGroup}>
-            <input type='text' id='tripDesc' placeholder='Trip Description' />
+            <input
+              type='text'
+              id='tripDesc'
+              placeholder='Trip Description'
+              value={tripDesc}
+              onChange={(e) => setTripDesc(e.target.value)}
+            />
             <label htmlFor='tripDesc' className={styles.label}>
               Trip Description
             </label>
@@ -49,7 +67,13 @@ function AddTrip() {
 
           {showAddFriend && (
             <div className={styles.fieldGroup}>
-              <input type='text' id='friend' placeholder='Add Friend' />
+              <input
+                type='text'
+                id='friend'
+                placeholder='Add Friend'
+                value={friend}
+                onChange={(e) => setFriend(e.target.value)}
+              />
               <label htmlFor='friend' className={styles.label}>
                 Add Friend
               </label>
