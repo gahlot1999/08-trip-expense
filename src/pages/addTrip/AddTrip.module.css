@@ -90,3 +90,34 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
+.addTripButtonGroup {
+  width: 75%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.addTripButtonGroup button {
+  border: none;
+  border-radius: 0.5rem;
+
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  padding: 0.8rem 0;
+
+  color: var(--clr-light);
+  outline-color: var(--clr-light);
+  background-color: hsl(var(--clr-secondary-hsl), 0.75);
+
+  transition: all 0.3s;
+}
+
+.addTripButtonGroup button:hover {
+  cursor: pointer;
+  background-color: hsl(var(--clr-secondary-hsl), 0.9);
+  box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;
+  translate: 0 -0.4rem;
+}

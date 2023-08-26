@@ -35,6 +35,7 @@
 
 .home button:hover {
   cursor: pointer;
+  background-color: hsl(var(--clr-secondary-hsl), 0.9);
   box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;
   translate: 0 -0.4rem;
 }
