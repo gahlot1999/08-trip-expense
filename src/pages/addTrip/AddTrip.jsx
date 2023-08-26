@@ -10,8 +10,8 @@ function AddTrip() {
       <div className={styles.addTripForm}>
         <form>
           <div className={styles.fieldGroup}>
-            <input type='text' id='tName' placeholder='Trip Name' />
-            <label htmlFor='tName' className={styles.label}>
+            <input type='text' id='tripName' placeholder='Trip Name' />
+            <label htmlFor='tripName' className={styles.label}>
               Trip Name
             </label>
           </div>

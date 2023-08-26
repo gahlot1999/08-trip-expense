@@ -2,7 +2,7 @@
   position: absolute;
   margin-top: 1.8rem;
   margin-left: 2.2rem;
-  padding: 0.3rem 1.4rem;
+  padding: 0rem 1.4rem;
   background-color: hsl(var(--clr-secondary-hsl), 0.6);
   border: none;
   border-radius: 100rem;
@@ -12,7 +12,7 @@
 .backBtn:hover {
   cursor: pointer;
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
-  padding: 0.5rem 1.7rem;
+  padding: 0 1.7rem;
 }
 
 .backBtn > svg {
@@ -21,7 +21,7 @@
 }
 
 .backBtn:hover > svg {
-  transform: scale(1.6, 1.3);
+  transform: translateX(-20%);
 }
 
 .addTripForm {
@@ -29,12 +29,7 @@
   margin-top: 10rem;
   margin-inline: auto;
   background-color: var(--clr-light);
-
-  font-size: 2rem;
-
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+  font-size: 1.8rem;
 }
 
 .fieldGroup {
@@ -42,14 +37,15 @@
 }
 
 .fieldGroup input {
+  -webkit-border-radius: 0;
   width: 100%;
   border: none;
   outline: none;
   padding: 0 0.5rem;
+  color: var(--clr-dark);
   border-bottom: 1.5px solid var(--clr-primary);
   background-color: transparent;
   transition: all 0.3s;
-  -webkit-appearance: none;
 }
 
 .fieldGroup input:active,
@@ -67,9 +63,9 @@
   display: block;
   left: 0;
   line-height: 1;
-  color: var(--clr-gray);
-  top: -15px;
-  font-size: 1.4rem;
+  color: var(--clr-gray-1);
+  top: -16px;
+  font-size: 1.6rem;
   transition: all 0.3s;
 }
 

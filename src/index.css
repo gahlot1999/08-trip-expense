@@ -30,12 +30,16 @@
   --clr-primary-hsl: 266.2, 100%, 60%;
   --clr-secondary-hsl: 156.9, 89.9%, 42.5%;
   --clr-light-hsl: 0, 5.3%, 96.3%;
+  --clr-dark-hsl: 240, 3.6%, 16.3%;
   --clr-gray-hsl: 0, 0%, 76.9%;
+  --clr-gray-1-hsl: 0, 0%, 56.9%;
 
   --clr-primary: hsl(266.2, 100%, 60%);
   --clr-secondary: hsl(156.9, 89.9%, 42.5%);
   --clr-light: hsl(0, 5.3%, 96.3%);
+  --clr-dark: hsl(240, 3.6%, 16.3%);
   --clr-gray: hsl(0, 0%, 76.9%);
+  --clr-gray-1: hsl(0, 0%, 56.9%);
 }
 
 /**************** CSS RESET ****************/
