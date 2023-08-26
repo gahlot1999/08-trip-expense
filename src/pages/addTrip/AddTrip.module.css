@@ -32,18 +32,23 @@
   font-size: 1.8rem;
 }
 
+.addTripForm form > div:not(:last-child) {
+  margin-bottom: 3.4rem;
+}
+
 .fieldGroup {
   position: relative;
 }
 
 .fieldGroup input {
+  border-radius: 0;
   -webkit-border-radius: 0;
   width: 100%;
   border: none;
   outline: none;
-  padding: 0 0.5rem;
+  padding: .3rem 0.5rem;
   color: var(--clr-dark);
-  border-bottom: 1.5px solid var(--clr-primary);
+  border-bottom: 2px solid var(--clr-primary);
   background-color: transparent;
   transition: all 0.3s;
 }
@@ -65,7 +70,7 @@
   line-height: 1;
   color: var(--clr-gray-1);
   top: -16px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   transition: all 0.3s;
 }
 
