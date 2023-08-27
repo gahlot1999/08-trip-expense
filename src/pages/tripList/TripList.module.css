@@ -1,7 +1,7 @@
 .tripListContainer {
   color: var(--clr-dark);
   height: 100%;
-  padding: 15% 10% 10% 10%;
+  padding-top: 15%;
 }
 
 .tripListContainer h2 {
@@ -15,7 +15,7 @@
 .tripList {
   margin-top: 1.5rem;
   display: grid;
-  gap: 3rem;
+  gap: 2.6rem;
   place-items: center;
   grid-template-columns: repeat(2, 1fr);
 }
