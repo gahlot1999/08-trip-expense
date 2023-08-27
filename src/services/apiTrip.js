@@ -12,6 +12,15 @@ export async function createTrip(obj) {
   return data;
 }
 
+export async function deleteTrip(id) {
+  const { error } = await supabase
+    .from('travelAppTripData')
+    .delete()
+    .eq('id', id);
+
+  if (error) throw new Error(error.message);
+}
+
 export async function getTrips() {
   let { data, error } = await supabase.from('travelAppTripData').select('*');
 

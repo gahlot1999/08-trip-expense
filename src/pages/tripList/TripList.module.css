@@ -2,6 +2,7 @@
   color: var(--clr-dark);
   height: 100%;
   padding-top: 15%;
+  padding-inline: 2rem;
 }
 
 .tripListContainer h2 {

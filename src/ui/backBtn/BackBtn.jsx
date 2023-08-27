@@ -6,7 +6,7 @@ function BackBtn({ size = 24 }) {
   const navigate = useNavigate();
 
   function handleBackClick() {
-    navigate(-1);
+    navigate('/home');
   }
 
   return (
