@@ -3,11 +3,10 @@ import styles from './TripList.module.css';
 import { useTrips } from '../../hooks/useTrips';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import FullPageSpinner from '../../ui/spinner/FullPageSpinner';
+import TripItem from './TripItem';
 
 function TripList() {
   const { data, isLoading } = useTrips();
-
-  console.log(data);
 
   if (isLoading) return <FullPageSpinner />;
 
@@ -15,17 +14,10 @@ function TripList() {
     <>
       <BackBtn />
       <div className={styles.tripListContainer}>
-        <div>
+        <h2>Travel Log</h2>
+        <div className={styles.tripList}>
           {data.map((el) => (
-            <div key={el.id}>
-              {el.place}
-              <br />
-              {el.description}
-              <br />
-              {el.friends}
-              <br />
-              <br />
-            </div>
+            <TripItem key={el.id} trip={el} />
           ))}
         </div>
       </div>

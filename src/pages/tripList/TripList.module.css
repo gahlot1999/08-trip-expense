@@ -1,8 +1,21 @@
 .tripListContainer {
   color: var(--clr-dark);
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 15% 10% 10% 10%;
+}
 
+.tripListContainer h2 {
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--clr-gray-1);
+  letter-spacing: 0.1rem;
+}
+
+.tripList {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 3rem;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
 }

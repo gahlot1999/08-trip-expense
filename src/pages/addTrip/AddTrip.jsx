@@ -4,6 +4,7 @@ import { useState } from 'react';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import Spinner from '../../ui/spinner/Spinner';
 import { useCreateTrip } from '../../hooks/useCreateTrip';
+import { toast } from 'react-hot-toast';
 
 function AddTrip() {
   const { mutate: mutateCreateTrip, isLoading: isCreatingTrip } =
@@ -24,12 +25,23 @@ function AddTrip() {
 
   function handleAddTrip(e) {
     e.preventDefault();
+
+    if (!tripPlace || !tripDesc) {
+      toast.error('All fields are mandatory');
+      return;
+    }
+
+    if (friends.length < 1) {
+      toast.error('Add atleast one friend');
+      return;
+    }
+
     const newTrip = {
       place: tripPlace,
       description: tripDesc,
       friends,
     };
-    // addTripData(newTrip);
+
     mutateCreateTrip(newTrip);
   }
 
