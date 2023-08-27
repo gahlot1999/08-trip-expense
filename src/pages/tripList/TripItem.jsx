@@ -1,18 +1,25 @@
-import { useCityImage } from '../../hooks/useCityImage';
-import Spinner from '../../ui/spinner/FullPageSpinner';
+import { useState } from 'react';
+import { getLink } from '../../services/apiImages';
 import styles from './TripItem.module.css';
+import { useCityImage } from '../../hooks/useCityImage';
 
 function TripItem({ trip }) {
   const { data: url, isLoading } = useCityImage(trip?.place);
 
-  if (isLoading) return <Spinner />;
+  // const [url, setUrl] = useState('');
+
+  // getLink(trip.place).then(function (result) {
+  //   setUrl(result);
+  // });
 
   return (
     <div
-      style={{ backgroundImage: `url(${url})` }}
+      style={{
+        background: `linear-gradient(180deg, hsl(156.9, 89.9%, 42.5%, .2), hsl(156.9, 89.9%, 42.5%, .5)),url(${url})`,
+      }}
       className={styles.tripListItem}
     >
-      {trip.place}
+      <p>{trip.place}</p>
     </div>
   );
 }
