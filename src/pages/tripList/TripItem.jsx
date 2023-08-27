@@ -1,16 +1,9 @@
-import { useState } from 'react';
-import { getLink } from '../../services/apiImages';
 import styles from './TripItem.module.css';
+import { MdDeleteOutline } from 'react-icons/md';
 import { useCityImage } from '../../hooks/useCityImage';
 
 function TripItem({ trip }) {
-  const { data: url, isLoading } = useCityImage(trip?.place);
-
-  // const [url, setUrl] = useState('');
-
-  // getLink(trip.place).then(function (result) {
-  //   setUrl(result);
-  // });
+  const { data: url } = useCityImage(trip?.place);
 
   return (
     <div
@@ -19,6 +12,9 @@ function TripItem({ trip }) {
       }}
       className={styles.tripListItem}
     >
+      <div className={styles.deleteSvgButton}>
+        <MdDeleteOutline size={24} />
+      </div>
       <p>{trip.place}</p>
     </div>
   );
