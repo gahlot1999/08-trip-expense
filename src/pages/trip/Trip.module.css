@@ -1,0 +1,53 @@
+.trip {
+  height: 100%;
+  color: var(--clr-dark);
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.tripHeader {
+  height: 18%;
+  background-color: pink;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.tripContent {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-inline: 1.4rem;
+}
+
+/***** FORM ******/
+
+.fieldGroup {
+  position: relative;
+}
+
+.fieldGroup > input::placeholder {
+  color: transparent;
+}
+
+.fieldGroup > input {
+  display: block;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--clr-primary);
+}
+
+.label {
+  position: absolute;
+  top: -2rem;
+  transition: all 0.3s;
+}
+
+.fieldGroup > input:placeholder-shown ~ .label {
+  top: 0;
+}
+
+/***** END OF FORM ******/

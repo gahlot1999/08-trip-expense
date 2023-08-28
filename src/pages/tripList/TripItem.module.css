@@ -12,10 +12,12 @@
   justify-content: center;
 
   position: relative;
+
+  text-decoration: none;
 }
 
-.tripListItem:hover {
-}
+/* .tripListItem:hover {
+} */
 
 .tripListItem > p {
   color: var(--clr-light);
@@ -23,7 +25,6 @@
   font-weight: 600;
   letter-spacing: 0.1rem;
   padding-bottom: 0.8rem;
-
   user-select: none;
 }
 

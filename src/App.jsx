@@ -6,6 +6,7 @@ import AppLayout from './ui/appLayout/AppLayout';
 import Home from './pages/home/Home';
 import AddTrip from './pages/addTrip/AddTrip';
 import TripList from './pages/tripList/TripList';
+import Trip from './pages/trip/Trip';
 
 function App() {
   const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/add' element={<AddTrip />} />
             <Route path='/trips' element={<TripList />} />
+            <Route path='/trip/:id' element={<Trip />} />
           </Route>
         </Routes>
       </BrowserRouter>

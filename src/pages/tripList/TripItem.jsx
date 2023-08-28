@@ -2,6 +2,7 @@ import styles from './TripItem.module.css';
 import { MdDeleteOutline } from 'react-icons/md';
 import { useCityImage } from '../../hooks/useCityImage';
 import { useDeleteTrip } from '../../hooks/useDeleteTrip';
+import { Link } from 'react-router-dom';
 
 function TripItem({ trip }) {
   const { mutate: mutateDeleteTrip, isLoading: isDeletingTrip } =
@@ -15,7 +16,8 @@ function TripItem({ trip }) {
   const { data: url } = useCityImage(trip?.place);
 
   return (
-    <div
+    <Link
+      to={`/trip/${trip.id}`}
       style={
         !isDeletingTrip
           ? {
@@ -31,7 +33,7 @@ function TripItem({ trip }) {
         <MdDeleteOutline size={24} />
       </div>
       <p>{trip.place}</p>
-    </div>
+    </Link>
   );
 }
 
