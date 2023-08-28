@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import { useTrips } from '../../hooks/useTrips';
@@ -8,7 +8,10 @@ function Trip() {
   const urlID = useParams().id;
 
   const { data, isLoading } = useTrips();
+
   const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
+
+  const friends = tripData?.friends;
 
   if (isLoading) return <Spinner />;
 
@@ -41,7 +44,16 @@ function Trip() {
               </label>
             </div>
 
-            <div className={styles.fieldGroup}>Paid by</div>
+            <div className={styles.selectGroup}>
+              <label htmlFor='friends'>Paid By</label>
+              <select name='friends' id='friends'>
+                {friends?.map((el) => (
+                  <option value={el} key={el}>
+                    {el}
+                  </option>
+                ))}
+              </select>
+            </div>
           </form>
         </div>
       </div>

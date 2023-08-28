@@ -2,15 +2,19 @@ import styles from './TripItem.module.css';
 import { MdDeleteOutline } from 'react-icons/md';
 import { useCityImage } from '../../hooks/useCityImage';
 import { useDeleteTrip } from '../../hooks/useDeleteTrip';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function TripItem({ trip }) {
+  const navigate = useNavigate();
+
   const { mutate: mutateDeleteTrip, isLoading: isDeletingTrip } =
     useDeleteTrip();
 
-  function handleDeleteTrip() {
+  function handleDeleteTrip(e) {
+    e.preventDefault();
     const deleteTrip = confirm('Confirm Trip Deletion');
     if (deleteTrip) mutateDeleteTrip(trip.id);
+    navigate('/trips');
   }
 
   const { data: url } = useCityImage(trip?.place);

@@ -16,6 +16,12 @@
   justify-content: center;
 }
 
+.tripHeader h2 {
+  text-transform: capitalize;
+  font-size: 2.8rem;
+  padding-bottom: 0.5rem;
+}
+
 .tripContent {
   flex-grow: 1;
   overflow-y: auto;
@@ -23,6 +29,32 @@
 }
 
 /***** FORM ******/
+
+.addExpense {
+  width: 85%;
+  margin: auto;
+  padding: 1.6rem 4rem;
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
+}
+
+.addExpense h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  margin-bottom: 2rem;
+}
+
+.addExpense form {
+  width: 100%;
+}
+
+.addExpense form > div:not(:last-child) {
+  margin-bottom: 3rem;
+}
 
 .fieldGroup {
   position: relative;
@@ -33,21 +65,59 @@
 }
 
 .fieldGroup > input {
+  border-radius: 0;
+  width: 100%;
+  color: var(--clr-dark);
+  font-weight: 400;
   display: block;
   background-color: transparent;
   border: none;
   outline: none;
   border-bottom: 2px solid var(--clr-primary);
+  padding: 0.2rem 0.5rem;
+}
+
+.fieldGroup > input:hover,
+.fieldGroup > input:focus {
+  border-bottom: 2px solid var(--clr-secondary);
 }
 
 .label {
+  cursor: pointer;
+  color: var(--clr-gray-1);
+  font-size: 1.4rem;
+  padding: 0.2rem 0.5rem;
   position: absolute;
   top: -2rem;
+  left: 0;
   transition: all 0.3s;
 }
 
 .fieldGroup > input:placeholder-shown ~ .label {
+  font-size: 1.6rem;
   top: 0;
+  cursor: text;
+}
+
+.selectGroup {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.selectGroup label {
+  flex: 0 0 7rem;
+}
+
+.selectGroup select {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.selectGroup option {
+  padding: 10rem;
 }
 
 /***** END OF FORM ******/
