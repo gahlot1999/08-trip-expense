@@ -41,6 +41,13 @@ function Trip() {
               </label>
             </div>
 
+            <div className={styles.fieldGroup}>
+              <input type='number' placeholder='Amount' id='amount' />
+              <label className={styles.label} htmlFor='amount'>
+                Amount
+              </label>
+            </div>
+
             <div className={styles.selectGroup}>
               <label htmlFor='categories'>Category</label>
               <select name='categories' id='categories'>
@@ -50,13 +57,6 @@ function Trip() {
                   </option>
                 ))}
               </select>
-            </div>
-
-            <div className={styles.fieldGroup}>
-              <input type='number' placeholder='Amount' id='amount' />
-              <label className={styles.label} htmlFor='amount'>
-                Amount
-              </label>
             </div>
 
             <div className={styles.selectGroup}>

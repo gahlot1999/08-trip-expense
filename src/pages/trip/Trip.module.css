@@ -77,8 +77,8 @@
   padding: 0.2rem 0.5rem;
 }
 
-.fieldGroup > input:hover,
-.fieldGroup > input:focus {
+.fieldGroup > input:is(:hover, :focus),
+.selectGroup select:is(:hover, :focus) {
   border-bottom: 2px solid var(--clr-secondary);
 }
 
@@ -101,19 +101,23 @@
 
 .selectGroup {
   display: flex;
+  gap: 1rem;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
 .selectGroup label {
-  flex: 0 0 7rem;
+  flex: 0 0 6rem;
 }
 
 .selectGroup select {
   flex-grow: 1;
   outline: none;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.2rem;
+  background-color: transparent;
+  border-bottom: 2px solid var(--clr-primary);
 }
 
 .selectGroup option {
