@@ -4,12 +4,16 @@ import BackBtn from '../../ui/backBtn/BackBtn';
 import { useTrips } from '../../hooks/useTrips';
 import Spinner from '../../ui/spinner/FullPageSpinner';
 import { useForm } from 'react-hook-form';
+import { useAddTripData } from '../../hooks/useAddTripData';
 
 function Trip() {
   const urlID = useParams().id;
 
   const { data, isLoading } = useTrips();
   const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
+  const { mutate: mutateAddTripData, isLoading: isAddingExpense } =
+    useAddTripData();
+
   const friends = tripData?.friends;
 
   const categories = [
@@ -26,11 +30,10 @@ function Trip() {
     formState: { errors },
   } = useForm();
 
-  // console.log(register, handleSubmit, errors);
-  // console.log(errors);
-
   function onSubmit(data) {
-    console.log(data);
+    const expData = { ...data, id: tripData.id };
+    console.log({ ...data, id: tripData.id });
+    mutateAddTripData(expData);
   }
 
   if (isLoading) return <Spinner />;
@@ -50,9 +53,15 @@ function Trip() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.fieldGroup}>
               <input
+                style={
+                  errors?.expenseName
+                    ? { borderBottom: '2px solid var(--clr-danger)' }
+                    : { borderBottom: '2px solid var(--clr-primary)' }
+                }
                 type='text'
                 placeholder='Expense Name'
                 id='name'
+                defaultValue='Petrol'
                 {...register('expenseName', {
                   required: {
                     value: true,
@@ -67,9 +76,15 @@ function Trip() {
 
             <div className={styles.fieldGroup}>
               <input
+                style={
+                  errors?.amount
+                    ? { borderBottom: '2px solid var(--clr-danger)' }
+                    : { borderBottom: '2px solid var(--clr-primary)' }
+                }
                 type='number'
                 placeholder='Amount'
                 id='amount'
+                defaultValue={350}
                 {...register('amount', {
                   required: {
                     value: true,
@@ -85,8 +100,14 @@ function Trip() {
             <div className={styles.selectGroup}>
               <label htmlFor='categories'>Category</label>
               <select
+                style={
+                  errors?.category
+                    ? { borderBottom: '2px solid var(--clr-danger)' }
+                    : { borderBottom: '2px solid var(--clr-primary)' }
+                }
                 name='categories'
                 id='categories'
+                defaultValue='Food'
                 {...register('category', {
                   required: {
                     value: true,
@@ -106,8 +127,14 @@ function Trip() {
             <div className={styles.selectGroup}>
               <label htmlFor='friends'>Paid By</label>
               <select
+                style={
+                  errors?.paidBy
+                    ? { borderBottom: '2px solid var(--clr-danger)' }
+                    : { borderBottom: '2px solid var(--clr-primary)' }
+                }
                 name='friends'
                 id='friends'
+                defaultValue='Ashish'
                 {...register('paidBy', {
                   required: {
                     value: true,
@@ -126,7 +153,9 @@ function Trip() {
 
             <div className={styles.buttonGroup}>
               <button type='reset'>Reset</button>
-              <button type='submit'>Add</button>
+              <button type='submit'>
+                {isAddingExpense ? 'Adding...' : 'Add'}
+              </button>
             </div>
           </form>
         </div>

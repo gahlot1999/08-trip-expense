@@ -28,3 +28,12 @@ export async function getTrips() {
 
   return data;
 }
+
+export async function addTripData(expData) {
+  const { error } = await supabase
+    .from('travelAppTripExpenses')
+    .insert([expData])
+    .select();
+
+  if (error) throw new Error(error.message);
+}
