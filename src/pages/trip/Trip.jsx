@@ -7,10 +7,16 @@ import Spinner from '../../ui/spinner/FullPageSpinner';
 function Trip() {
   const urlID = useParams().id;
 
+  const categories = [
+    'Accommodation',
+    'Food',
+    'Travel',
+    'Entertainment',
+    'Other',
+  ];
+
   const { data, isLoading } = useTrips();
-
   const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
-
   const friends = tripData?.friends;
 
   if (isLoading) return <Spinner />;
@@ -35,7 +41,16 @@ function Trip() {
               </label>
             </div>
 
-            <div className={styles.fieldGroup}>Category</div>
+            <div className={styles.selectGroup}>
+              <label htmlFor='categories'>Category</label>
+              <select name='categories' id='categories'>
+                {categories?.map((el) => (
+                  <option value={el} key={el}>
+                    {el}
+                  </option>
+                ))}
+              </select>
+            </div>
 
             <div className={styles.fieldGroup}>
               <input type='number' placeholder='Amount' id='amount' />
