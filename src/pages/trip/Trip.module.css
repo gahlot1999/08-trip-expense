@@ -25,14 +25,15 @@
 .tripContent {
   flex-grow: 1;
   overflow-y: auto;
-  margin-inline: 1.4rem;
+  /* margin-inline: 1.4rem; */
 }
 
 /***** FORM ******/
 
 .addExpense {
   width: 85%;
-  margin: auto;
+  margin-inline: auto;
+  margin-block: 2rem;
   padding: 1.6rem 4rem;
   display: flex;
   flex-direction: column;
@@ -100,21 +101,22 @@
 
 .selectGroup {
   display: flex;
-  gap: 1rem;
+  /* gap: 1rem; */
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .selectGroup label {
-  flex: 0 0 6rem;
+  flex: 0 0 8rem;
+  color: var(--clr-gray-1);
 }
 
 .selectGroup select {
   flex-grow: 1;
   outline: none;
   border: none;
-  padding: 0.5rem 0.2rem;
+  padding: 0.3rem 0;
   background-color: transparent;
   border-bottom: 2px solid var(--clr-primary);
 }
@@ -125,6 +127,42 @@
 
 .selectGroup option {
   padding: 10rem;
+}
+
+.selectGroup select > option:first-child {
+  color: var(--clr-gray);
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonGroup button {
+  border: none;
+  border-radius: 0.2rem;
+  outline: none;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  padding: 0.5rem 2rem;
+  background-color: hsl(var(--clr-secondary-hsl), 0.7);
+  color: hsl(var(--clr-light-hsl), 0.9);
+  transition: all 0.3s;
+}
+
+.buttonGroup button:first-child {
+  background-color: hsl(var(--clr-danger-hsl), 0.7);
+}
+
+.buttonGroup button:hover {
+  cursor: pointer;
+  background-color: hsl(var(--clr-secondary-hsl), 0.9);
+}
+
+.buttonGroup button:first-child:hover {
+  background-color: hsl(var(--clr-danger-hsl), 0.9);
 }
 
 /***** END OF FORM ******/

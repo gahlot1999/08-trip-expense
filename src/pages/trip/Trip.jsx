@@ -3,9 +3,14 @@ import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import { useTrips } from '../../hooks/useTrips';
 import Spinner from '../../ui/spinner/FullPageSpinner';
+import { useForm } from 'react-hook-form';
 
 function Trip() {
   const urlID = useParams().id;
+
+  const { data, isLoading } = useTrips();
+  const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
+  const friends = tripData?.friends;
 
   const categories = [
     'Accommodation',
@@ -15,9 +20,18 @@ function Trip() {
     'Other',
   ];
 
-  const { data, isLoading } = useTrips();
-  const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
-  const friends = tripData?.friends;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // console.log(register, handleSubmit, errors);
+  // console.log(errors);
+
+  function onSubmit(data) {
+    console.log(data);
+  }
 
   if (isLoading) return <Spinner />;
 
@@ -33,16 +47,36 @@ function Trip() {
 
         <div className={styles.addExpense}>
           <h2>Add Expense</h2>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.fieldGroup}>
-              <input type='text' placeholder='Expense Name' id='name' />
+              <input
+                type='text'
+                placeholder='Expense Name'
+                id='name'
+                {...register('expenseName', {
+                  required: {
+                    value: true,
+                    message: 'Expense name is mandatory',
+                  },
+                })}
+              />
               <label className={styles.label} htmlFor='name'>
                 Expense Name
               </label>
             </div>
 
             <div className={styles.fieldGroup}>
-              <input type='number' placeholder='Amount' id='amount' />
+              <input
+                type='number'
+                placeholder='Amount'
+                id='amount'
+                {...register('amount', {
+                  required: {
+                    value: true,
+                    message: 'Amount is mandatory',
+                  },
+                })}
+              />
               <label className={styles.label} htmlFor='amount'>
                 Amount
               </label>
@@ -50,10 +84,17 @@ function Trip() {
 
             <div className={styles.selectGroup}>
               <label htmlFor='categories'>Category</label>
-              <select name='categories' id='categories'>
-                <option value='' disabled hidden>
-                  Select
-                </option>
+              <select
+                name='categories'
+                id='categories'
+                {...register('category', {
+                  required: {
+                    value: true,
+                    message: 'Category is mandatory',
+                  },
+                })}
+              >
+                <option value=''>Select</option>
                 {categories?.map((el) => (
                   <option value={el} key={el}>
                     {el}
@@ -64,16 +105,28 @@ function Trip() {
 
             <div className={styles.selectGroup}>
               <label htmlFor='friends'>Paid By</label>
-              <select name='friends' id='friends'>
-                <option value='' disabled hidden>
-                  Select
-                </option>
+              <select
+                name='friends'
+                id='friends'
+                {...register('paidBy', {
+                  required: {
+                    value: true,
+                    message: 'Paid by is mandatory',
+                  },
+                })}
+              >
+                <option value=''>Select</option>
                 {friends?.map((el) => (
                   <option value={el} key={el}>
                     {el}
                   </option>
                 ))}
               </select>
+            </div>
+
+            <div className={styles.buttonGroup}>
+              <button type='reset'>Reset</button>
+              <button type='submit'>Add</button>
             </div>
           </form>
         </div>
