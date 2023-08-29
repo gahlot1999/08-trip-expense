@@ -51,6 +51,9 @@ function Trip() {
             <div className={styles.selectGroup}>
               <label htmlFor='categories'>Category</label>
               <select name='categories' id='categories'>
+                <option value='' disabled hidden>
+                  Select
+                </option>
                 {categories?.map((el) => (
                   <option value={el} key={el}>
                     {el}
@@ -62,6 +65,9 @@ function Trip() {
             <div className={styles.selectGroup}>
               <label htmlFor='friends'>Paid By</label>
               <select name='friends' id='friends'>
+                <option value='' disabled hidden>
+                  Select
+                </option>
                 {friends?.map((el) => (
                   <option value={el} key={el}>
                     {el}
