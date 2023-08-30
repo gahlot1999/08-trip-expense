@@ -49,6 +49,7 @@
 
 .expenseButtonGroup {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
@@ -56,6 +57,7 @@
 
 .expenseButtonGroup > svg {
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 /*** END OF EXPENSE ***/

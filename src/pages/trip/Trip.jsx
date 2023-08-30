@@ -56,8 +56,8 @@ function Trip() {
             <span>Travel</span>
             <span>Ashish</span>
             <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={18} />
-              <AiFillDelete size={18} />
+              <AiFillEdit size={16} />
+              <AiFillDelete size={16} />
             </span>
           </div>
 
@@ -67,8 +67,8 @@ function Trip() {
             <span>Travel</span>
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={18} />
-              <AiFillDelete size={18} />
+              <AiFillEdit size={16} />
+              <AiFillDelete size={16} />
             </span>
           </div>
 
@@ -78,8 +78,8 @@ function Trip() {
             <span>Travel</span>
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={18} />
-              <AiFillDelete size={18} />
+              <AiFillEdit size={16} />
+              <AiFillDelete size={16} />
             </span>
           </div>
 
@@ -89,8 +89,8 @@ function Trip() {
             <span>Travel</span>
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={18} />
-              <AiFillDelete size={18} />
+              <AiFillEdit size={16} />
+              <AiFillDelete size={16} />
             </span>
           </div>
         </div>
