@@ -1,8 +1,10 @@
 .backBtn {
-  position: absolute;
-  margin-top: 1.8rem;
-  margin-left: 2.2rem;
-  padding: 0 2rem;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  /* margin-top: 1.8rem; */
+  /* margin-left: 2.2rem; */
+  padding: 0.3rem 0.3rem;
   background-color: hsl(var(--clr-secondary-hsl), 0.6);
   border: none;
   border-radius: 100rem;
