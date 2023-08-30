@@ -13,8 +13,8 @@ function Home() {
 
   return (
     <div className={styles.home}>
-      <button onClick={handleNewTrip}>New Trip?</button>
-      <button onClick={handleExistingTrip}>Existing Trip?</button>
+      <button onClick={handleNewTrip}>Let&apos;s Travel ✈️</button>
+      <button onClick={handleExistingTrip}>Past Journeys 📅</button>
     </div>
   );
 }

@@ -18,10 +18,10 @@
 
 .backBtn > svg {
   fill: var(--clr-light);
-  transition: all 0.3s;
+  /* transition: all 0.3s; */
 }
 
-.backBtn:hover > svg {
+/* .backBtn:hover > svg {
   animation: arrowMove 1s linear infinite;
 }
 
@@ -35,4 +35,4 @@
   100% {
     transform: translateX(-100%);
   }
-}
+} */
