@@ -50,6 +50,13 @@ function Trip() {
 
       <div className={styles.tripContent}>
         <div className={styles.expenseContainer}>
+          <div className={`${styles.expenseItem} ${styles.expenseItemHeader}`}>
+            <span>Expense</span>
+            <span>Amount</span>
+            {/* <span>Travel</span> */}
+            <span>Paid By</span>
+          </div>
+
           <div className={styles.expenseItem}>
             <span>Petrol</span>
             <span>400</span>

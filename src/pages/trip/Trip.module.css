@@ -31,7 +31,7 @@
 /*** EXPENSE ***/
 
 .expenseContainer {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   width: 85%;
   margin-inline: auto;
   margin-block: 2rem;
@@ -44,6 +44,18 @@
   gap: 0.5rem;
   grid-template-columns: repeat(3, 1fr) 0.5fr;
   align-items: center;
+}
+
+.expenseItem:hover {
+  background-color: hsl(var(--clr-gray-hsl), 0.1);
+}
+
+.expenseItemHeader {
+  font-weight: 600;
+  background-color: hsl(var(--clr-gray-hsl), 0.2);
+  border: none;
+  border-radius: 0.3rem;
+  padding: 1.2rem 1rem;
 }
 
 .expenseButtonGroup {
