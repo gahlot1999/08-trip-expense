@@ -30,10 +30,23 @@ export async function getTrips() {
 }
 
 export async function addTripData(expData) {
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from('travelAppTripExpenses')
     .insert([expData])
     .select();
 
   if (error) throw new Error(error.message);
+
+  return data;
+}
+
+export async function getTripData(id) {
+  let { data, error } = await supabase
+    .from('travelAppTripExpenses')
+    .select('*')
+    .eq('id', id.queryKey.at(0));
+
+  if (error) throw new Error(error.message);
+
+  return data;
 }

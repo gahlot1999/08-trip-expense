@@ -8,12 +8,15 @@ import { useAddTripData } from '../../hooks/useAddTripData';
 import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import Spinner from '../../ui/spinner/FullPageSpinner';
+import { useGetTripData } from '../../hooks/useGetTripData';
 
 function Trip() {
-  const urlID = useParams().id;
+  const urlID = Number(useParams().id);
 
+  const { data: expenseData, isLoading: isLoadingExpenseData } =
+    useGetTripData(urlID);
   const { data, isLoading } = useTrips();
-  const tripData = data?.filter((el) => el.id === Number(urlID)).at(0);
+  const tripData = data?.filter((el) => el.id === urlID).at(0);
   const { mutate: mutateAddTripData, isLoading: isAddingExpense } =
     useAddTripData();
 
@@ -35,7 +38,6 @@ function Trip() {
 
   function onSubmit(data) {
     const expData = { ...data, id: tripData.id };
-    console.log({ ...data, id: tripData.id });
     mutateAddTripData(expData);
   }
 
@@ -57,49 +59,18 @@ function Trip() {
             <span>Paid By</span>
           </div>
 
-          <div className={styles.expenseItem}>
-            <span>Petrol</span>
-            <span>400</span>
-            {/* <span>Travel</span> */}
-            <span>Ashish</span>
-            <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={16} />
-              <AiFillDelete size={16} />
-            </span>
-          </div>
-
-          <div className={styles.expenseItem}>
-            <span>Toll</span>
-            <span>200</span>
-            {/* <span>Travel</span> */}
-            <span>Gaurav</span>
-            <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={16} />
-              <AiFillDelete size={16} />
-            </span>
-          </div>
-
-          <div className={styles.expenseItem}>
-            <span>Food from reliance for trip</span>
-            <span>772</span>
-            {/* <span>Travel</span> */}
-            <span>Gaurav</span>
-            <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={16} />
-              <AiFillDelete size={16} />
-            </span>
-          </div>
-
-          <div className={styles.expenseItem}>
-            <span>Car washing and mudguard</span>
-            <span>500</span>
-            {/* <span>Travel</span> */}
-            <span>Gaurav</span>
-            <span className={styles.expenseButtonGroup}>
-              <AiFillEdit size={16} />
-              <AiFillDelete size={16} />
-            </span>
-          </div>
+          {expenseData?.map((el) => (
+            <div key={el.expId} className={styles.expenseItem}>
+              <span>{el.expenseName}</span>
+              <span>{el.amount}</span>
+              {/* <span>Travel</span> */}
+              <span>{el.paidBy}</span>
+              <span className={styles.expenseButtonGroup}>
+                <AiFillEdit size={16} />
+                <AiFillDelete size={16} />
+              </span>
+            </div>
+          ))}
         </div>
 
         <div className={styles.addExpense}>
@@ -115,7 +86,6 @@ function Trip() {
                 type='text'
                 placeholder='Expense Name'
                 id='name'
-                defaultValue='Petrol'
                 {...register('expenseName', {
                   required: {
                     value: true,
@@ -138,7 +108,6 @@ function Trip() {
                 type='number'
                 placeholder='Amount'
                 id='amount'
-                defaultValue={350}
                 {...register('amount', {
                   required: {
                     value: true,
@@ -161,7 +130,6 @@ function Trip() {
                 }
                 name='categories'
                 id='categories'
-                defaultValue='Food'
                 {...register('category', {
                   required: {
                     value: true,
@@ -188,7 +156,6 @@ function Trip() {
                 }
                 name='friends'
                 id='friends'
-                defaultValue='Ashish'
                 {...register('paidBy', {
                   required: {
                     value: true,
