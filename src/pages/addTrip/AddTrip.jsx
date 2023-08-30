@@ -31,8 +31,8 @@ function AddTrip() {
       return;
     }
 
-    if (friends.length < 1) {
-      toast.error('Add atleast one friend');
+    if (friends.length < 3) {
+      toast.error('Add atleast two friends');
       return;
     }
 
@@ -58,6 +58,9 @@ function AddTrip() {
     <>
       <BackBtn size={24} />
       <div className={styles.addTripForm}>
+        <h2>
+          From Idea to Itinerary <span>Your Next Adventure Starts Now!</span>
+        </h2>
         <form>
           <div className={styles.fieldGroup}>
             <input

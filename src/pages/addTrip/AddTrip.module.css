@@ -1,10 +1,31 @@
 .addTripForm {
-  width: 75%;
-  margin-top: 10rem;
+  width: 80%;
   margin-inline: auto;
+  margin-top: 3rem;
   background-color: var(--clr-light);
   color: var(--clr-gray-1);
   font-size: 1.8rem;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.addTripForm h2 {
+  font-size: 2.6rem;
+  color: var(--clr-dark);
+}
+
+.addTripForm h2 span {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: hsl(var(--clr-dark-hsl), 0.7);
+}
+
+.addTripForm form {
+  margin-top: 2.6rem;
 }
 
 .addTripForm form > div:not(:last-child) {
