@@ -53,7 +53,7 @@ function Trip() {
           <div className={styles.expenseItem}>
             <span>Petrol</span>
             <span>400</span>
-            <span>Travel</span>
+            {/* <span>Travel</span> */}
             <span>Ashish</span>
             <span className={styles.expenseButtonGroup}>
               <AiFillEdit size={16} />
@@ -64,7 +64,7 @@ function Trip() {
           <div className={styles.expenseItem}>
             <span>Toll</span>
             <span>200</span>
-            <span>Travel</span>
+            {/* <span>Travel</span> */}
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
               <AiFillEdit size={16} />
@@ -75,7 +75,7 @@ function Trip() {
           <div className={styles.expenseItem}>
             <span>Food from reliance for trip</span>
             <span>772</span>
-            <span>Travel</span>
+            {/* <span>Travel</span> */}
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
               <AiFillEdit size={16} />
@@ -86,7 +86,7 @@ function Trip() {
           <div className={styles.expenseItem}>
             <span>Car washing and mudguard</span>
             <span>500</span>
-            <span>Travel</span>
+            {/* <span>Travel</span> */}
             <span>Gaurav</span>
             <span className={styles.expenseButtonGroup}>
               <AiFillEdit size={16} />

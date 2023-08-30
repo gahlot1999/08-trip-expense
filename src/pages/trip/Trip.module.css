@@ -41,18 +41,16 @@
   padding: 2rem 1rem;
   border-bottom: 1px solid var(--clr-gray);
   display: grid;
-  gap: .5rem;
-  grid-template-columns: repeat(4, 1fr) .5fr;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, 1fr) 0.5fr;
   align-items: center;
-  
 }
 
 .expenseButtonGroup {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .expenseButtonGroup > svg {
