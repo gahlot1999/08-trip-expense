@@ -28,6 +28,38 @@
   /* margin-inline: 1.4rem; */
 }
 
+/*** EXPENSE ***/
+
+.expenseContainer {
+  font-size: 1.6rem;
+  width: 85%;
+  margin-inline: auto;
+  margin-block: 2rem;
+}
+
+.expenseItem {
+  padding: 2rem 1rem;
+  border-bottom: 1px solid var(--clr-gray);
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(4, 1fr) .5fr;
+  align-items: center;
+  
+}
+
+.expenseButtonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.expenseButtonGroup > svg {
+  cursor: pointer;
+}
+
+/*** END OF EXPENSE ***/
+
 /***** FORM ******/
 
 .addExpense {

@@ -1,10 +1,13 @@
 import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
+
+import { useTrips } from '../../hooks/useTrips';
+import { useAddTripData } from '../../hooks/useAddTripData';
+
 import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
-import { useTrips } from '../../hooks/useTrips';
 import Spinner from '../../ui/spinner/FullPageSpinner';
-import { useForm } from 'react-hook-form';
-import { useAddTripData } from '../../hooks/useAddTripData';
 
 function Trip() {
   const urlID = useParams().id;
@@ -46,7 +49,51 @@ function Trip() {
       </div>
 
       <div className={styles.tripContent}>
-        <div className={styles.expense}>Expense</div>
+        <div className={styles.expenseContainer}>
+          <div className={styles.expenseItem}>
+            <span>Petrol</span>
+            <span>400</span>
+            <span>Travel</span>
+            <span>Ashish</span>
+            <span className={styles.expenseButtonGroup}>
+              <AiFillEdit size={18} />
+              <AiFillDelete size={18} />
+            </span>
+          </div>
+
+          <div className={styles.expenseItem}>
+            <span>Toll</span>
+            <span>200</span>
+            <span>Travel</span>
+            <span>Gaurav</span>
+            <span className={styles.expenseButtonGroup}>
+              <AiFillEdit size={18} />
+              <AiFillDelete size={18} />
+            </span>
+          </div>
+
+          <div className={styles.expenseItem}>
+            <span>Food from reliance for trip</span>
+            <span>772</span>
+            <span>Travel</span>
+            <span>Gaurav</span>
+            <span className={styles.expenseButtonGroup}>
+              <AiFillEdit size={18} />
+              <AiFillDelete size={18} />
+            </span>
+          </div>
+
+          <div className={styles.expenseItem}>
+            <span>Car washing and mudguard</span>
+            <span>500</span>
+            <span>Travel</span>
+            <span>Gaurav</span>
+            <span className={styles.expenseButtonGroup}>
+              <AiFillEdit size={18} />
+              <AiFillDelete size={18} />
+            </span>
+          </div>
+        </div>
 
         <div className={styles.addExpense}>
           <h2>Add Expense</h2>
