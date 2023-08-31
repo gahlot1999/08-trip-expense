@@ -50,7 +50,8 @@
 }
 
 .addTripForm form {
-  margin-block: 2.6rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 .addTripForm form > div:not(:last-child) {
