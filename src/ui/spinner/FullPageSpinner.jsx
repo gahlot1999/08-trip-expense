@@ -1,6 +1,6 @@
 import styles from './FullPageSpinner.module.css';
 
-function Spinner() {
+function FullPageSpinner() {
   return (
     <div className={styles.spinnerContainer}>
       <span className={styles.spinner}></span>;
@@ -8,4 +8,4 @@ function Spinner() {
   );
 }
 
-export default Spinner;
+export default FullPageSpinner;

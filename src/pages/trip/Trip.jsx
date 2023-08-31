@@ -7,12 +7,16 @@ import { useAddTripData } from '../../hooks/useAddTripData';
 
 import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
-import Spinner from '../../ui/spinner/FullPageSpinner';
+import FullPageSpinner from '../../ui/spinner/FullPageSpinner';
+import SmallSpinner from '../../ui/spinner/SmallSpinner';
 import { useGetTripData } from '../../hooks/useGetTripData';
+import { useDeleteTripData } from '../../hooks/useDeleteTripData';
 
 function Trip() {
   const urlID = Number(useParams().id);
 
+  const { mutate: mutateDeleteTripData, isLoading: isDeletingTripData } =
+    useDeleteTripData(urlID);
   const { data: expenseData, isLoading: isLoadingExpenseData } =
     useGetTripData(urlID);
   const { data, isLoading } = useTrips();
@@ -41,7 +45,12 @@ function Trip() {
     mutateAddTripData(expData);
   }
 
-  if (isLoading || isLoadingExpenseData) return <Spinner />;
+  function handleDelete(expId) {
+    const deleteTripData = confirm('Confirm trip data deletion');
+    if (deleteTripData) mutateDeleteTripData(expId);
+  }
+
+  if (isLoading || isLoadingExpenseData) return <FullPageSpinner />;
 
   return (
     <>
@@ -67,7 +76,15 @@ function Trip() {
                 <span>{el.paidBy}</span>
                 <span className={styles.expenseButtonGroup}>
                   <AiFillEdit size={18} />
-                  <AiFillDelete size={18} />
+
+                  {isDeletingTripData ? (
+                    <SmallSpinner />
+                  ) : (
+                    <AiFillDelete
+                      onClick={() => handleDelete(el.expId)}
+                      size={18}
+                    />
+                  )}
                 </span>
               </div>
             ))}
@@ -175,7 +192,7 @@ function Trip() {
               <div className={styles.buttonGroup}>
                 <button type='reset'>Reset</button>
                 <button type='submit'>
-                  {isAddingExpense ? 'Adding...' : 'Add'}
+                  {isAddingExpense ? <SmallSpinner /> : 'Add'}
                 </button>
               </div>
             </form>

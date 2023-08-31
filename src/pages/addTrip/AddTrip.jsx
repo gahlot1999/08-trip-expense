@@ -2,7 +2,7 @@ import styles from './AddTrip.module.css';
 import { TiDelete } from 'react-icons/ti';
 import { useState } from 'react';
 import BackBtn from '../../ui/backBtn/BackBtn';
-import Spinner from '../../ui/spinner/Spinner';
+import SmallSpinner from '../../ui/spinner/SmallSpinner';
 import { useCreateTrip } from '../../hooks/useCreateTrip';
 import { toast } from 'react-hot-toast';
 
@@ -36,7 +36,7 @@ function AddTrip() {
       return;
     }
 
-    if (friends.length < 3) {
+    if (friends.length < 2) {
       toast.error('Add atleast two friends');
       return;
     }
@@ -130,7 +130,7 @@ function AddTrip() {
 
           <div className={styles.addTripButtonGroup}>
             <button onClick={handleAddTrip}>
-              {isCreatingTrip ? <Spinner /> : 'Add Trip'}
+              {isCreatingTrip ? <SmallSpinner /> : 'Add Trip'}
             </button>
           </div>
         </form>

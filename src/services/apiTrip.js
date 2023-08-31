@@ -40,6 +40,15 @@ export async function addTripData(expData) {
   return data;
 }
 
+export async function deleteTripData(expId) {
+  const { error } = await supabase
+    .from('travelAppTripExpenses')
+    .delete()
+    .eq('expId', expId);
+
+  if (error) throw new Error(error.message);
+}
+
 export async function getTripData(id) {
   let { data, error } = await supabase
     .from('travelAppTripExpenses')

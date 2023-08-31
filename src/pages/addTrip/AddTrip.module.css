@@ -122,6 +122,10 @@
   background-color: hsl(var(--clr-secondary-hsl), 0.75);
 }
 
+.fieldGroup > button:hover {
+  background-color: hsl(var(--clr-secondary-hsl), 1);
+}
+
 .addTripButtonGroup {
   width: 75%;
   margin: auto;
@@ -146,8 +150,7 @@
   transition: all 0.3s;
 }
 
-.addTripButtonGroup button:hover,
-.fieldGroup > button:hover {
+.addTripButtonGroup button:hover {
   cursor: pointer;
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
   box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;
