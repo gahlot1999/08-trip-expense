@@ -11,9 +11,11 @@ import FullPageSpinner from '../../ui/spinner/FullPageSpinner';
 import SmallSpinner from '../../ui/spinner/SmallSpinner';
 import { useGetTripData } from '../../hooks/useGetTripData';
 import { useDeleteTripData } from '../../hooks/useDeleteTripData';
+import { useState } from 'react';
 
 function Trip() {
   const urlID = Number(useParams().id);
+  const [deletingEl, setDeletingEl] = useState('');
 
   const { mutate: mutateDeleteTripData, isLoading: isDeletingTripData } =
     useDeleteTripData(urlID);
@@ -47,7 +49,10 @@ function Trip() {
 
   function handleDelete(expId) {
     const deleteTripData = confirm('Confirm trip data deletion');
-    if (deleteTripData) mutateDeleteTripData(expId);
+    if (deleteTripData) {
+      setDeletingEl(expId);
+      mutateDeleteTripData(expId);
+    }
   }
 
   if (isLoading || isLoadingExpenseData) return <FullPageSpinner />;
@@ -77,7 +82,7 @@ function Trip() {
                 <span className={styles.expenseButtonGroup}>
                   <AiFillEdit size={18} />
 
-                  {isDeletingTripData ? (
+                  {el.expId === deletingEl ? (
                     <SmallSpinner />
                   ) : (
                     <AiFillDelete
