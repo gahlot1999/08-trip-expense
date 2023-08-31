@@ -13,8 +13,33 @@
 }
 
 .addTripForm h2 {
+  position: relative;
+  text-align: center;
   font-size: 2.6rem;
   color: var(--clr-dark);
+}
+
+.addTripForm h2::after {
+  content: '';
+  display: block;
+  margin-top: 1rem;
+  height: 0.1rem;
+  width: 60%;
+  margin-inline: auto;
+  background-color: var(--clr-gray-1);
+}
+
+.addTripForm h2::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  transform: translateX(-50%);
+
+  margin-top: 0.5rem;
+  height: 0.3rem;
+  width: 5rem;
+  background-color: hsl(var(--clr-primary-hsl), 0.6);
 }
 
 .addTripForm h2 span {
@@ -25,7 +50,7 @@
 }
 
 .addTripForm form {
-  margin-top: 2.6rem;
+  margin-block: 2.6rem;
 }
 
 .addTripForm form > div:not(:last-child) {
@@ -59,6 +84,7 @@
 }
 
 .label {
+  cursor: text;
   padding: 0 0.5rem;
   position: absolute;
   display: block;
@@ -74,6 +100,25 @@
   font-size: 1.8rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.fieldGroup > button {
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: .2rem 1.5rem;
+  font-size: 1.6rem;
+  transition: all .3s;
+
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+
+  color: var(--clr-light);
+  outline-color: var(--clr-light);
+  background-color: hsl(var(--clr-secondary-hsl), 0.75);
 }
 
 .addTripButtonGroup {
@@ -100,7 +145,8 @@
   transition: all 0.3s;
 }
 
-.addTripButtonGroup button:hover {
+.addTripButtonGroup button:hover,
+.fieldGroup > button:hover {
   cursor: pointer;
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
   box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;

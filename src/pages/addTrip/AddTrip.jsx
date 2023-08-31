@@ -6,11 +6,13 @@ import Spinner from '../../ui/spinner/Spinner';
 import { useCreateTrip } from '../../hooks/useCreateTrip';
 import { toast } from 'react-hot-toast';
 
+import { LiaUserFriendsSolid } from 'react-icons/lia';
+
 function AddTrip() {
   const { mutate: mutateCreateTrip, isLoading: isCreatingTrip } =
     useCreateTrip();
 
-  const [showAddFriend, setShowAddFriend] = useState(false);
+  // const [showAddFriend, setShowAddFriend] = useState(true);
   const [tripPlace, setTripPlace] = useState('');
   const [tripDesc, setTripDesc] = useState('');
   const [friend, setFriend] = useState('');
@@ -20,7 +22,7 @@ function AddTrip() {
     e.preventDefault();
     setFriends((arr) => [...arr, friend]);
     setFriend('');
-    setShowAddFriend(false);
+    // setShowAddFriend(false);
   }
 
   function handleAddTrip(e) {
@@ -45,10 +47,10 @@ function AddTrip() {
     mutateCreateTrip(newTrip);
   }
 
-  function handleShowHideFriend(e) {
-    e.preventDefault();
-    setShowAddFriend((curr) => !curr);
-  }
+  // function handleShowHideFriend(e) {
+  //   e.preventDefault();
+  //   // setShowAddFriend((curr) => !curr);
+  // }
 
   function handleDeleteFriend(data) {
     setFriends((curr) => curr.filter((el) => el !== data));
@@ -72,7 +74,6 @@ function AddTrip() {
               onChange={(e) => setTripPlace(e.target.value)}
             />
             <label htmlFor='tripPlace' className={styles.label}>
-              
               Trip Place
             </label>
           </div>
@@ -89,6 +90,28 @@ function AddTrip() {
             <label htmlFor='tripDesc' className={styles.label}>
               Trip Description
             </label>
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <input
+              disabled={isCreatingTrip}
+              autoFocus
+              type='text'
+              id='friend'
+              placeholder='Add Friend'
+              value={friend}
+              onChange={(e) => setFriend(e.target.value)}
+            />
+            <label
+              name='addFriendButton'
+              htmlFor='friend'
+              className={styles.label}
+            >
+              Add Friend
+            </label>
+            <button onClick={handleAddFriend}>
+            <LiaUserFriendsSolid size={24}/>
+            </button>
           </div>
 
           {friends.length > 0 && (
@@ -108,35 +131,7 @@ function AddTrip() {
             </div>
           )}
 
-          {showAddFriend && (
-            <div className={styles.fieldGroup}>
-              <input
-                disabled={isCreatingTrip}
-                autoFocus
-                type='text'
-                id='friend'
-                placeholder='Add Friend'
-                value={friend}
-                onChange={(e) => setFriend(e.target.value)}
-              />
-              <label htmlFor='friend' className={styles.label}>
-                Add Friend
-              </label>
-            </div>
-          )}
-
           <div className={styles.addTripButtonGroup}>
-            {showAddFriend && (
-              <button onClick={handleAddFriend}>Add Friend</button>
-            )}
-
-            <button
-              onClick={handleShowHideFriend}
-              className={!showAddFriend ? '' : styles.dangerBtn}
-            >
-              {!showAddFriend ? 'Add Friend' : 'Close'}
-            </button>
-
             <button onClick={handleAddTrip}>
               {isCreatingTrip ? <Spinner /> : 'Add Trip'}
             </button>
