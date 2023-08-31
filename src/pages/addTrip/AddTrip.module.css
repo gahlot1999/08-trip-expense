@@ -107,9 +107,9 @@
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: .2rem 1.5rem;
+  padding: 0.2rem 1.5rem;
   font-size: 1.6rem;
-  transition: all .3s;
+  transition: all 0.3s;
 
   border: none;
   border-radius: 0.5rem;

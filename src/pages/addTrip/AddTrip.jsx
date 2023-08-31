@@ -7,12 +7,12 @@ import { useCreateTrip } from '../../hooks/useCreateTrip';
 import { toast } from 'react-hot-toast';
 
 import { LiaUserFriendsSolid } from 'react-icons/lia';
+import { isEmpty } from '../../services/helpers';
 
 function AddTrip() {
   const { mutate: mutateCreateTrip, isLoading: isCreatingTrip } =
     useCreateTrip();
 
-  // const [showAddFriend, setShowAddFriend] = useState(true);
   const [tripPlace, setTripPlace] = useState('');
   const [tripDesc, setTripDesc] = useState('');
   const [friend, setFriend] = useState('');
@@ -20,9 +20,12 @@ function AddTrip() {
 
   function handleAddFriend(e) {
     e.preventDefault();
+    if (isEmpty(friend)) {
+      setFriend('');
+      return;
+    }
     setFriends((arr) => [...arr, friend]);
     setFriend('');
-    // setShowAddFriend(false);
   }
 
   function handleAddTrip(e) {
@@ -46,11 +49,6 @@ function AddTrip() {
 
     mutateCreateTrip(newTrip);
   }
-
-  // function handleShowHideFriend(e) {
-  //   e.preventDefault();
-  //   // setShowAddFriend((curr) => !curr);
-  // }
 
   function handleDeleteFriend(data) {
     setFriends((curr) => curr.filter((el) => el !== data));
@@ -95,7 +93,6 @@ function AddTrip() {
           <div className={styles.fieldGroup}>
             <input
               disabled={isCreatingTrip}
-              autoFocus
               type='text'
               id='friend'
               placeholder='Add Friend'
@@ -110,7 +107,7 @@ function AddTrip() {
               Add Friend
             </label>
             <button onClick={handleAddFriend}>
-            <LiaUserFriendsSolid size={24}/>
+              <LiaUserFriendsSolid size={24} />
             </button>
           </div>
 
