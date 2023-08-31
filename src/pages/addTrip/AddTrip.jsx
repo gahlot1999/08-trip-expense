@@ -72,6 +72,7 @@ function AddTrip() {
               onChange={(e) => setTripPlace(e.target.value)}
             />
             <label htmlFor='tripPlace' className={styles.label}>
+              
               Trip Place
             </label>
           </div>
