@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import styles from './BackBtn.module.css';
 import { IoMdArrowRoundBack } from 'react-icons/io';
 
-function BackBtn({ size = 24 }) {
+function BackBtn({ size = 24, nav = -1 }) {
   const navigate = useNavigate();
 
   function handleBackClick() {
-    navigate('/home');
+    navigate(nav);
   }
 
   return (

@@ -128,11 +128,9 @@ function AddTrip() {
             </div>
           )}
 
-          <div className={styles.addTripButtonGroup}>
-            <button onClick={handleAddTrip}>
-              {isCreatingTrip ? <SmallSpinner /> : 'Add Trip'}
-            </button>
-          </div>
+          <button onClick={handleAddTrip} className={styles.addTripButton}>
+            {isCreatingTrip ? <SmallSpinner /> : 'Add Trip'}
+          </button>
         </form>
       </div>
     </>

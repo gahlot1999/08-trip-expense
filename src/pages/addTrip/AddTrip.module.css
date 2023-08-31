@@ -126,17 +126,10 @@
   background-color: hsl(var(--clr-secondary-hsl), 1);
 }
 
-.addTripButtonGroup {
-  width: 75%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.addTripButtonGroup button {
+.addTripButton {
+  width: 100%;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 
   font-size: 1.6rem;
   font-weight: 600;
@@ -150,7 +143,11 @@
   transition: all 0.3s;
 }
 
-.addTripButtonGroup button:hover {
+.addTripButton > span {
+  margin: auto !important;
+}
+
+.addTripButton:hover {
   cursor: pointer;
   background-color: hsl(var(--clr-secondary-hsl), 0.9);
   box-shadow: hsl(var(--clr-secondary-hsl), 0.3) 0px 8px 24px;

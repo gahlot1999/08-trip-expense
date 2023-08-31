@@ -22,10 +22,10 @@ function Trip() {
   const { data: expenseData, isLoading: isLoadingExpenseData } =
     useGetTripData(urlID);
   const { data, isLoading } = useTrips();
-  const tripData = data?.filter((el) => el.id === urlID).at(0);
   const { mutate: mutateAddTripData, isLoading: isAddingExpense } =
     useAddTripData();
 
+  const tripData = data?.filter((el) => el.id === urlID).at(0);
   const friends = tripData?.friends;
 
   const categories = [
@@ -69,7 +69,6 @@ function Trip() {
             >
               <span>Expense</span>
               <span>Amount</span>
-              {/* <span>Travel</span> */}
               <span>Paid By</span>
             </div>
 
@@ -77,12 +76,11 @@ function Trip() {
               <div key={el.expId} className={styles.expenseItem}>
                 <span>{el.expenseName}</span>
                 <span>{el.amount}</span>
-                {/* <span>Travel</span> */}
                 <span>{el.paidBy}</span>
                 <span className={styles.expenseButtonGroup}>
                   <AiFillEdit size={18} />
 
-                  {el.expId === deletingEl ? (
+                  {isDeletingTripData || el.expId === deletingEl ? (
                     <SmallSpinner />
                   ) : (
                     <AiFillDelete
