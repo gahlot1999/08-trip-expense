@@ -1,3 +1,7 @@
+import styles from './TripSummary.module.css';
+
+import { AiFillCloseSquare } from 'react-icons/ai';
+
 import {
   Cell,
   Legend,
@@ -7,7 +11,6 @@ import {
   Tooltip,
 } from 'recharts';
 import { formatPrice, randomColor } from '../../services/helpers';
-import styles from './TripSummary.module.css';
 
 /* const tripSummaryByCategory1 = [
     { category: 'Accommodation', amount: 4500, color: 'red' },
@@ -17,7 +20,7 @@ import styles from './TripSummary.module.css';
     { category: 'Other', amount: 700, color: 'gray' },
   ]; */
 
-function TripSummary({ expenseData }) {
+function TripSummary({ expenseData, handleShowSummary }) {
   const tripSummary = [];
   const dummyTripSummaryByCategory = [];
   const tripSummaryByCategory = [];
@@ -54,6 +57,7 @@ function TripSummary({ expenseData }) {
 
   return (
     <div className={styles.summary}>
+      <AiFillCloseSquare size={24} onClick={handleShowSummary} />
       <h2>Trip Summary</h2>
 
       <div className={styles.summaryChart}>

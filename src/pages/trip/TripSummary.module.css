@@ -1,10 +1,24 @@
 .summary {
+  position: relative;
   padding: 0 2rem 2rem 2rem;
   margin-inline: auto;
   margin-block: 2rem;
 
   border-top: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
   border-bottom: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
+}
+
+.summary > svg {
+  fill: hsl(var(--clr-danger-hsl), 0.8);
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  transition: all 0.3s;
+}
+
+.summary > svg:hover {
+  cursor: pointer;
+  fill: var(--clr-danger);
 }
 
 .summaryChart {
@@ -43,10 +57,10 @@
 }
 
 .expenseSummary p:nth-child(1) {
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 
 .expenseSummary p:nth-child(2) {
   font-weight: 600;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }

@@ -64,6 +64,7 @@
 /***** FORM ******/
 
 .addExpense {
+  position: relative;
   width: 85%;
   margin-inline: auto;
   margin-block: 2rem;
@@ -72,6 +73,19 @@
   flex-direction: column;
 
   border: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
+}
+
+.addExpense > svg {
+  fill: hsl(var(--clr-danger-hsl), 0.8);
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  transition: all 0.3s;
+}
+
+.addExpense > svg:hover {
+  cursor: pointer;
+  fill: var(--clr-danger);
 }
 
 .addExpense h2 {
