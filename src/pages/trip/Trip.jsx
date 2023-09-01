@@ -1,26 +1,39 @@
+import styles from './Trip.module.css';
+
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 import { useTrips } from '../../hooks/useTrips';
 import { useAddTripData } from '../../hooks/useAddTripData';
+import { useGetTripData } from '../../hooks/useGetTripData';
+import { useDeleteTripData } from '../../hooks/useDeleteTripData';
 
-import styles from './Trip.module.css';
 import BackBtn from '../../ui/backBtn/BackBtn';
 import FullPageSpinner from '../../ui/spinner/FullPageSpinner';
 import SmallSpinner from '../../ui/spinner/SmallSpinner';
-import { useGetTripData } from '../../hooks/useGetTripData';
-import { useDeleteTripData } from '../../hooks/useDeleteTripData';
-import { useState } from 'react';
+import TripSummary from './TripSummary';
+
+import { formatPrice } from '../../services/helpers';
 
 function Trip() {
   const urlID = Number(useParams().id);
   const [deletingEl, setDeletingEl] = useState('');
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const { mutate: mutateDeleteTripData, isLoading: isDeletingTripData } =
     useDeleteTripData(urlID);
   const { data: expenseData, isLoading: isLoadingExpenseData } =
     useGetTripData(urlID);
+
+  const total = expenseData?.reduce((curr, el) => el.amount + curr, 0);
+
   const { data, isLoading } = useTrips();
   const { mutate: mutateAddTripData, isLoading: isAddingExpense } =
     useAddTripData();
@@ -35,12 +48,6 @@ function Trip() {
     'Entertainment',
     'Other',
   ];
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   function onSubmit(data) {
     const expData = { ...data, id: tripData.id };
@@ -63,35 +70,47 @@ function Trip() {
       <div className={styles.trip}>
         <div className={styles.tripContent}>
           <h2>{tripData.place}</h2>
-          <div className={styles.expenseContainer}>
-            <div
-              className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
-            >
-              <span>Expense</span>
-              <span>Amount</span>
-              <span>Paid By</span>
-            </div>
 
-            {expenseData?.map((el) => (
-              <div key={el.expId} className={styles.expenseItem}>
-                <span>{el.expenseName}</span>
-                <span>{el.amount}</span>
-                <span>{el.paidBy}</span>
-                <span className={styles.expenseButtonGroup}>
-                  <AiFillEdit size={18} />
-
-                  {isDeletingTripData || el.expId === deletingEl ? (
-                    <SmallSpinner />
-                  ) : (
-                    <AiFillDelete
-                      onClick={() => handleDelete(el.expId)}
-                      size={18}
-                    />
-                  )}
-                </span>
+          {expenseData.length > 0 && (
+            <div className={styles.expenseContainer}>
+              <div
+                className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
+              >
+                <span>Expense</span>
+                <span>Amount</span>
+                <span>Paid By</span>
               </div>
-            ))}
-          </div>
+
+              {expenseData?.map((el) => (
+                <div key={el.expId} className={styles.expenseItem}>
+                  <span>{el.expenseName}</span>
+                  <span>{formatPrice(el.amount)}</span>
+                  <span>{el.paidBy}</span>
+                  <span className={styles.expenseButtonGroup}>
+                    <AiFillEdit size={18} />
+
+                    {isDeletingTripData || el.expId === deletingEl ? (
+                      <SmallSpinner />
+                    ) : (
+                      <AiFillDelete
+                        onClick={() => handleDelete(el.expId)}
+                        size={18}
+                      />
+                    )}
+                  </span>
+                </div>
+              ))}
+
+              <div
+                className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
+              >
+                <span>Total</span>
+                <span>{formatPrice(total)}</span>
+              </div>
+            </div>
+          )}
+
+          <TripSummary expenseData={expenseData} friends={friends} />
 
           <div className={styles.addExpense}>
             <h2>Add Expense</h2>

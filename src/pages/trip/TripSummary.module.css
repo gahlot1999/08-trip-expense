@@ -1,0 +1,47 @@
+.summary {
+  padding: 0 2rem 2rem 2rem;
+  margin-inline: auto;
+  margin-block: 2rem;
+
+  border-top: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
+  border-bottom: 1px solid hsl(var(--clr-gray-1-hsl), 0.4);
+}
+
+.summaryChart {
+}
+
+.expenseSummaryContainer {
+  text-align: center;
+
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 374px) {
+  .expenseSummaryContainer {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.expenseSummary {
+  width: 100%;
+  padding-block: 2.5rem;
+  font-size: 1.5rem;
+  border: 1px solid hsl(var(--clr-gray-1-hsl), 0.2);
+}
+
+.expenseSummary:hover {
+  cursor: pointer;
+  background-color: hsl(var(--clr-gray-hsl), 0.1);
+}
+
+.expenseSummary p:nth-child(1) {
+  margin-bottom: .2rem;
+}
+
+.expenseSummary p:nth-child(2) {
+  font-weight: 600;
+  letter-spacing: .5px;
+}
