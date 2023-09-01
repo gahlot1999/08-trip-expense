@@ -214,7 +214,7 @@ function Trip() {
             </div>
           )}
 
-          {expenseData.length > 0 && (
+          {true && (
             <div className={styles.expenseContainer}>
               <div
                 className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
