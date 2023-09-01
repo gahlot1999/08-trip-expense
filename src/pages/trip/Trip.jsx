@@ -34,6 +34,7 @@ function Trip() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   const { mutate: mutateDeleteTripData } = useDeleteTripData(urlID);
@@ -58,8 +59,15 @@ function Trip() {
   ];
 
   function onSubmit(data) {
-    const expData = { ...data, id: tripData.id };
-    mutateAddTripData(expData);
+    mutateAddTripData(
+      { ...data, id: tripData?.id },
+      {
+        onSuccess: () => {
+          reset();
+          handleShowAddExpenseForm();
+        },
+      },
+    );
   }
 
   function handleDelete(expId) {
@@ -222,7 +230,11 @@ function Trip() {
                       fill='var(--clr-danger)'
                     />
                   ) : (
-                    <BiSolidReport size={20} onClick={handleShowSummary} fill='var(--clr-primary)' />
+                    <BiSolidReport
+                      size={20}
+                      onClick={handleShowSummary}
+                      fill='var(--clr-primary)'
+                    />
                   )}
                   {showAddExpenseForm ? (
                     <AiFillCloseCircle
