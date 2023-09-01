@@ -8,6 +8,11 @@
 }
 
 .summaryChart {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4rem;
+
+  padding-bottom: 2rem;
 }
 
 .expenseSummaryContainer {
