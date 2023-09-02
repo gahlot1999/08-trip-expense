@@ -31,7 +31,7 @@ function ProtectedRoute({ children }) {
         <BackBtn />
         <div className={styles.enterPinContainer}>
           <form>
-            <h2>Access Trippppp</h2>
+            <h2>Access Trip</h2>
             <div className={styles.fieldGroup}>
               <input
                 type='number'
