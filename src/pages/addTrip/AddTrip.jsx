@@ -15,6 +15,7 @@ function AddTrip() {
 
   const [tripPlace, setTripPlace] = useState('');
   const [tripDesc, setTripDesc] = useState('');
+  const [tripPin, setTripPin] = useState('');
   const [friend, setFriend] = useState('');
   const [friends, setFriends] = useState([]);
 
@@ -31,8 +32,13 @@ function AddTrip() {
   function handleAddTrip(e) {
     e.preventDefault();
 
-    if (!tripPlace || !tripDesc) {
+    if (!tripPlace || !tripDesc || !tripPin || isEmpty(tripPin)) {
       toast.error('All fields are mandatory');
+      return;
+    }
+
+    if (tripPin.length > 4) {
+      toast.error('Trip pin must be of 4 digit');
       return;
     }
 
@@ -45,6 +51,7 @@ function AddTrip() {
       place: tripPlace,
       description: tripDesc,
       friends,
+      pin: tripPin,
     };
 
     mutateCreateTrip(newTrip);
@@ -87,6 +94,21 @@ function AddTrip() {
             />
             <label htmlFor='tripDesc' className={styles.label}>
               Trip Description
+            </label>
+          </div>
+
+          <div className={styles.fieldGroup}>
+            <input
+              disabled={isCreatingTrip}
+              type='number'
+              inputMode='numeric'
+              id='tripPin'
+              placeholder='Enter 4 Digit Trip Pin'
+              value={tripPin}
+              onChange={(e) => setTripPin(e.target.value)}
+            />
+            <label htmlFor='tripPin' className={styles.label}>
+              Enter 4 Digit Trip Pin
             </label>
           </div>
 

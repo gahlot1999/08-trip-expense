@@ -1,6 +1,6 @@
 import styles from './Trip.module.css';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
@@ -25,6 +25,7 @@ import TripSummary from './TripSummary';
 import { formatPrice } from '../../services/helpers';
 
 function Trip() {
+  const summaryRef = useRef(null);
   const urlID = Number(useParams().id);
   const [deletingEl, setDeletingEl] = useState('');
   const [showAddExpenseForm, setShowAddExpenseForm] = useState(true);
@@ -85,6 +86,12 @@ function Trip() {
 
   function handleShowSummary() {
     setShowSummary((curr) => !curr);
+    if (summaryRef?.current) {
+      summaryRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
   }
 
   function handleShowAddExpenseForm() {
@@ -105,7 +112,8 @@ function Trip() {
               expenseData={expenseData}
               friends={friends}
               handleShowSummary={handleShowSummary}
-              showSummary={showSummary}
+              total={total}
+              summaryRef={summaryRef}
             />
           )}
 

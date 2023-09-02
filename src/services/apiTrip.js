@@ -59,3 +59,14 @@ export async function getTripData(id) {
 
   return data;
 }
+
+export async function getTripPin(id) {
+  let { data, error } = await supabase
+    .from('travelAppTripData')
+    .select('pin')
+    .eq('id', Number(id));
+
+  if (error) throw new Error(error.message);
+
+  return data.at(0).pin;
+}

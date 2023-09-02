@@ -12,31 +12,19 @@ import {
 } from 'recharts';
 import { formatPrice, randomColor } from '../../services/helpers';
 
-/* const tripSummaryByCategory1 = [
-    { category: 'Accommodation', amount: 4500, color: 'red' },
-    { category: 'Food', amount: 2000, color: 'royalblue' },
-    { category: 'Travel', amount: 1500, color: 'orangered' },
-    { category: 'Entertainment', amount: 1000, color: 'green' },
-    { category: 'Other', amount: 700, color: 'gray' },
-  ]; */
-
-function TripSummary({ expenseData, handleShowSummary, showSummary }) {
+function TripSummary({ expenseData, handleShowSummary, summaryRef }) {
   const tripSummary = [];
   const dummyTripSummaryByCategory = [];
-  const tripSummaryByCategory = [];
+  let tripSummaryByCategory = [];
 
   expenseData?.forEach((expense) => {
-    const { paidBy, amount } = expense;
+    const { paidBy, amount, category } = expense;
 
     if (!tripSummary[paidBy]) {
       tripSummary[paidBy] = amount;
     } else {
       tripSummary[paidBy] += amount;
     }
-  });
-
-  expenseData?.forEach((expense) => {
-    let { category, amount } = expense;
 
     if (!dummyTripSummaryByCategory[category]) {
       dummyTripSummaryByCategory[category] = amount;
@@ -45,22 +33,20 @@ function TripSummary({ expenseData, handleShowSummary, showSummary }) {
     }
   });
 
-  for (const category in dummyTripSummaryByCategory) {
-    tripSummaryByCategory.push({
+  tripSummaryByCategory = Object.entries(dummyTripSummaryByCategory).map(
+    ([category, amount]) => ({
       category,
-      amount: dummyTripSummaryByCategory[category],
+      amount,
       color: randomColor(),
-    });
-  }
-
-  randomColor();
+    }),
+  );
 
   return (
     <div className={styles.summary}>
       <AiFillCloseSquare size={24} onClick={handleShowSummary} />
       <h2>Trip Summary</h2>
 
-      <div className={styles.summaryChart}>
+      <div className={styles.summaryChart} ref={summaryRef}>
         <ResponsiveContainer width='100%' height={250}>
           <PieChart>
             <Pie

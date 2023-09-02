@@ -1,0 +1,87 @@
+.enterPinContainer {
+  height: calc(100% - 3.5rem);
+  color: var(--clr-dark);
+  padding: 0 5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.enterPinContainer form {
+  width: 100%;
+  padding: 2rem 2rem 4rem 2rem;
+
+  border-radius: 0.3rem;
+  border: 1px solid var(--clr-gray);
+
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.enterPinContainer form h2 {
+  text-align: center;
+  color: hsl(var(--clr-dark-hsl), 0.9);
+}
+
+.fieldGroup {
+  position: relative;
+}
+
+.fieldGroup input {
+  width: 100%;
+  display: block;
+
+  border: none;
+  outline: none;
+  border-radius: 0.2rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+.fieldGroup input::placeholder {
+  color: transparent;
+}
+
+.fieldGroup label {
+  cursor: pointer;
+
+  padding: 0.5rem 0.5rem;
+
+  font-size: 1.4rem;
+  color: var(--clr-gray-1);
+
+  position: absolute;
+  top: -3rem;
+
+  transition: all 0.3s;
+}
+
+.fieldGroup input:placeholder-shown ~ .label {
+  cursor: text;
+
+  position: absolute;
+  top: 0;
+  font-size: 1.5rem;
+  padding: 0.5rem 1.1rem;
+}
+
+.authBtn {
+  /* outline: none; */
+  outline-color: hsl(var(--clr-primary-hsl), 0.8);
+  border: none;
+  border-radius: 0.2rem;
+  padding-block: 0.5rem;
+  background-color: hsl(var(--clr-secondary-hsl), 0.7);
+
+  color: var(--clr-light);
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s;
+}
+
+.authBtn:hover {
+  cursor: pointer;
+  background-color: hsl(var(--clr-secondary-hsl), 1);
+}

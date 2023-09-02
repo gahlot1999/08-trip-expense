@@ -21,3 +21,35 @@ export function randomColor() {
 
   return `hsl(${random1}, ${random2}%, ${random3}%)`;
 }
+
+// Encrypt 4 digit pin
+// export function encrypt(pin) {
+//   const digits = String(pin).split('');
+//   const num = [];
+
+//   digits.map((el) => {
+//     if (el === '9') {
+//       num.push(0);
+//     } else {
+//       num.push(Number(el) + 1);
+//     }
+//   });
+
+//   return parseInt(num.join(''), 10);
+// }
+
+// Decrypt 4 digit pin
+// export function decrypt(encryptedPin) {
+//   const digits = String(encryptedPin).split('');
+//   const num = [];
+
+//   digits.map((el) => {
+//     if (el === '0') {
+//       num.push(9);
+//     } else {
+//       num.push(Number(el) - 1);
+//     }
+//   });
+
+//   return parseInt(num.join(''), 10);
+// }

@@ -7,6 +7,7 @@ import Home from './pages/home/Home';
 import AddTrip from './pages/addTrip/AddTrip';
 import TripList from './pages/tripList/TripList';
 import Trip from './pages/trip/Trip';
+import ProctectedRoute from './ui/protectedRoute/ProtectedRoute';
 
 function App() {
   const queryClient = new QueryClient();
@@ -20,7 +21,14 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/add' element={<AddTrip />} />
             <Route path='/trips' element={<TripList />} />
-            <Route path='/trip/:id' element={<Trip />} />
+            <Route
+              path='/trip/:id'
+              element={
+                <ProctectedRoute>
+                  <Trip />
+                </ProctectedRoute>
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>
