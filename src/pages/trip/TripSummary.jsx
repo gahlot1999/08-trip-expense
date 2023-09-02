@@ -20,7 +20,7 @@ import { formatPrice, randomColor } from '../../services/helpers';
     { category: 'Other', amount: 700, color: 'gray' },
   ]; */
 
-function TripSummary({ expenseData, handleShowSummary }) {
+function TripSummary({ expenseData, handleShowSummary, showSummary }) {
   const tripSummary = [];
   const dummyTripSummaryByCategory = [];
   const tripSummaryByCategory = [];
@@ -67,8 +67,8 @@ function TripSummary({ expenseData, handleShowSummary }) {
               data={tripSummaryByCategory}
               nameKey='category'
               dataKey='amount'
-              innerRadius={75}
-              outerRadius={100}
+              innerRadius={65}
+              outerRadius={80}
               paddingAngle={3}
             >
               {tripSummaryByCategory.map((entry) => (

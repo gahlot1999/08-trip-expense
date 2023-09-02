@@ -27,7 +27,7 @@ import { formatPrice } from '../../services/helpers';
 function Trip() {
   const urlID = Number(useParams().id);
   const [deletingEl, setDeletingEl] = useState('');
-  const [showAddExpenseForm, setShowAddExpenseForm] = useState(false);
+  const [showAddExpenseForm, setShowAddExpenseForm] = useState(true);
   const [showSummary, setShowSummary] = useState(false);
 
   const {
@@ -74,7 +74,12 @@ function Trip() {
     const deleteTripData = confirm('Confirm trip data deletion');
     if (deleteTripData) {
       setDeletingEl(expId);
-      mutateDeleteTripData(expId);
+      mutateDeleteTripData(expId, {
+        onSuccess: () => {
+          console.log(expenseData);
+          if (expenseData.length === 1) handleShowAddExpenseForm();
+        },
+      });
     }
   }
 
@@ -100,12 +105,18 @@ function Trip() {
               expenseData={expenseData}
               friends={friends}
               handleShowSummary={handleShowSummary}
+              showSummary={showSummary}
             />
           )}
 
           {showAddExpenseForm && (
             <div className={styles.addExpense}>
-              <AiFillCloseSquare size={24} onClick={handleShowAddExpenseForm} />
+              {expenseData.length > 0 && (
+                <AiFillCloseSquare
+                  size={24}
+                  onClick={handleShowAddExpenseForm}
+                />
+              )}
               <h2>Add Expense</h2>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={styles.fieldGroup}>
@@ -214,7 +225,7 @@ function Trip() {
             </div>
           )}
 
-          {true && (
+          {expenseData.length > 0 && (
             <div className={styles.expenseContainer}>
               <div
                 className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
@@ -226,7 +237,7 @@ function Trip() {
                   {showSummary ? (
                     <AiFillCloseCircle
                       size={20}
-                      onClick={handleShowAddExpenseForm}
+                      onClick={handleShowSummary}
                       fill='var(--clr-danger)'
                     />
                   ) : (
