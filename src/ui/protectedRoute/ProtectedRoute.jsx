@@ -3,6 +3,7 @@ import styles from './ProtectedRoute.module.css';
 import { useParams } from 'react-router-dom';
 import { getTripPin } from '../../services/apiTrip';
 import BackBtn from '../backBtn/BackBtn';
+import { toast } from 'react-hot-toast';
 
 function ProtectedRoute({ children }) {
   const params = useParams().id;
@@ -17,7 +18,11 @@ function ProtectedRoute({ children }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (Number(correctPin) === Number(pinEntered)) setIsAuthenticated(true);
+    if (Number(correctPin) === Number(pinEntered)) {
+      setIsAuthenticated(true);
+    } else {
+      toast.error('Invalid pin entered');
+    }
   }
 
   if (!isAuthenticated)
