@@ -33,3 +33,28 @@
   border-top-right-radius: 3rem;
   overflow: auto;
 }
+
+.settingIcon {
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+}
+
+.settingIcon > svg {
+  fill: var(--clr-light);
+  animation: rotate 10s linear infinite;
+}
+
+.settingIcon > svg:hover {
+  cursor: pointer;
+  animation: none;
+}
+
+@keyframes rotate {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}

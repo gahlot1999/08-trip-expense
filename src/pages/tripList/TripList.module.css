@@ -1,16 +1,17 @@
 .tripListContainer {
   color: var(--clr-dark);
   height: 100%;
-  padding-top: 15%;
   padding-inline: 2rem;
 }
 
 .tripListContainer h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
   text-align: center;
-  font-weight: 600;
   text-transform: uppercase;
-  color: var(--clr-gray-1);
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.15rem;
+
+  padding-block:2rem;
 }
 
 .tripList {

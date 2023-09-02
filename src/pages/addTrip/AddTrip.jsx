@@ -1,7 +1,6 @@
 import styles from './AddTrip.module.css';
 import { TiDelete } from 'react-icons/ti';
 import { useState } from 'react';
-import BackBtn from '../../ui/backBtn/BackBtn';
 import SmallSpinner from '../../ui/spinner/SmallSpinner';
 import { useCreateTrip } from '../../hooks/useCreateTrip';
 import { toast } from 'react-hot-toast';
@@ -63,7 +62,6 @@ function AddTrip() {
 
   return (
     <>
-      <BackBtn size={24} />
       <div className={styles.addTripForm}>
         <h2>
           From Idea to Itinerary <span>Your Next Adventure Starts Now!</span>

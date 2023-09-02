@@ -17,7 +17,6 @@ import { useAddTripData } from '../../hooks/useAddTripData';
 import { useGetTripData } from '../../hooks/useGetTripData';
 import { useDeleteTripData } from '../../hooks/useDeleteTripData';
 
-import BackBtn from '../../ui/backBtn/BackBtn';
 import FullPageSpinner from '../../ui/spinner/FullPageSpinner';
 import SmallSpinner from '../../ui/spinner/SmallSpinner';
 import TripSummary from './TripSummary';
@@ -101,207 +100,201 @@ function Trip() {
   if (isLoading || isLoadingExpenseData) return <FullPageSpinner />;
 
   return (
-    <>
-      <BackBtn />
-      <div className={styles.trip}>
-        <div className={styles.tripContent}>
-          <h2>{tripData.place}</h2>
+    <div className={styles.trip}>
+      <div className={styles.tripContent}>
+        <h2>{tripData.place}</h2>
 
-          {showSummary && (
-            <TripSummary
-              expenseData={expenseData}
-              friends={friends}
-              handleShowSummary={handleShowSummary}
-              total={total}
-              summaryRef={summaryRef}
-            />
-          )}
+        {showSummary && (
+          <TripSummary
+            expenseData={expenseData}
+            friends={friends}
+            handleShowSummary={handleShowSummary}
+            total={total}
+            summaryRef={summaryRef}
+          />
+        )}
 
-          {showAddExpenseForm && (
-            <div className={styles.addExpense}>
-              {expenseData.length > 0 && (
-                <AiFillCloseSquare
-                  size={24}
-                  onClick={handleShowAddExpenseForm}
+        {showAddExpenseForm && (
+          <div className={styles.addExpense}>
+            {expenseData.length > 0 && (
+              <AiFillCloseSquare size={24} onClick={handleShowAddExpenseForm} />
+            )}
+            <h2>Add Expense</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.fieldGroup}>
+                <input
+                  style={
+                    errors?.expenseName
+                      ? { borderBottom: '2px solid var(--clr-danger)' }
+                      : { borderBottom: '2px solid var(--clr-primary)' }
+                  }
+                  type='text'
+                  placeholder='Expense Name'
+                  id='name'
+                  {...register('expenseName', {
+                    required: {
+                      value: true,
+                      message: 'Expense name is mandatory',
+                    },
+                  })}
                 />
-              )}
-              <h2>Add Expense</h2>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={styles.fieldGroup}>
-                  <input
-                    style={
-                      errors?.expenseName
-                        ? { borderBottom: '2px solid var(--clr-danger)' }
-                        : { borderBottom: '2px solid var(--clr-primary)' }
-                    }
-                    type='text'
-                    placeholder='Expense Name'
-                    id='name'
-                    {...register('expenseName', {
-                      required: {
-                        value: true,
-                        message: 'Expense name is mandatory',
-                      },
-                    })}
+                <label className={styles.label} htmlFor='name'>
+                  Expense Name
+                </label>
+              </div>
+
+              <div className={styles.fieldGroup}>
+                <input
+                  style={
+                    errors?.amount
+                      ? { borderBottom: '2px solid var(--clr-danger)' }
+                      : { borderBottom: '2px solid var(--clr-primary)' }
+                  }
+                  type='number'
+                  placeholder='Amount'
+                  id='amount'
+                  {...register('amount', {
+                    required: {
+                      value: true,
+                      message: 'Amount is mandatory',
+                    },
+                  })}
+                />
+                <label className={styles.label} htmlFor='amount'>
+                  Amount
+                </label>
+              </div>
+
+              <div className={styles.selectGroup}>
+                <label htmlFor='categories'>Category</label>
+                <select
+                  style={
+                    errors?.category
+                      ? { borderBottom: '2px solid var(--clr-danger)' }
+                      : { borderBottom: '2px solid var(--clr-primary)' }
+                  }
+                  name='categories'
+                  id='categories'
+                  {...register('category', {
+                    required: {
+                      value: true,
+                      message: 'Category is mandatory',
+                    },
+                  })}
+                >
+                  <option value=''>Select</option>
+                  {categories?.map((el) => (
+                    <option value={el} key={el}>
+                      {el}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className={styles.selectGroup}>
+                <label htmlFor='friends'>Paid By</label>
+                <select
+                  style={
+                    errors?.paidBy
+                      ? { borderBottom: '2px solid var(--clr-danger)' }
+                      : { borderBottom: '2px solid var(--clr-primary)' }
+                  }
+                  name='friends'
+                  id='friends'
+                  {...register('paidBy', {
+                    required: {
+                      value: true,
+                      message: 'Paid by is mandatory',
+                    },
+                  })}
+                >
+                  <option value=''>Select</option>
+                  {friends?.map((el) => (
+                    <option value={el} key={el}>
+                      {el}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className={styles.buttonGroup}>
+                <button type='reset'>Reset</button>
+                <button type='submit'>
+                  {isAddingExpense ? <SmallSpinner /> : 'Add'}
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {expenseData.length > 0 && (
+          <div className={styles.expenseContainer}>
+            <div
+              className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
+            >
+              <span>Expense</span>
+              <span>Amount</span>
+              <span>Paid By</span>
+              <span className={styles.expenseButtonGroup}>
+                {showSummary ? (
+                  <AiFillCloseCircle
+                    size={20}
+                    onClick={handleShowSummary}
+                    fill='var(--clr-danger)'
                   />
-                  <label className={styles.label} htmlFor='name'>
-                    Expense Name
-                  </label>
-                </div>
-
-                <div className={styles.fieldGroup}>
-                  <input
-                    style={
-                      errors?.amount
-                        ? { borderBottom: '2px solid var(--clr-danger)' }
-                        : { borderBottom: '2px solid var(--clr-primary)' }
-                    }
-                    type='number'
-                    placeholder='Amount'
-                    id='amount'
-                    {...register('amount', {
-                      required: {
-                        value: true,
-                        message: 'Amount is mandatory',
-                      },
-                    })}
+                ) : (
+                  <BiSolidReport
+                    size={20}
+                    onClick={handleShowSummary}
+                    fill='var(--clr-primary)'
                   />
-                  <label className={styles.label} htmlFor='amount'>
-                    Amount
-                  </label>
-                </div>
-
-                <div className={styles.selectGroup}>
-                  <label htmlFor='categories'>Category</label>
-                  <select
-                    style={
-                      errors?.category
-                        ? { borderBottom: '2px solid var(--clr-danger)' }
-                        : { borderBottom: '2px solid var(--clr-primary)' }
-                    }
-                    name='categories'
-                    id='categories'
-                    {...register('category', {
-                      required: {
-                        value: true,
-                        message: 'Category is mandatory',
-                      },
-                    })}
-                  >
-                    <option value=''>Select</option>
-                    {categories?.map((el) => (
-                      <option value={el} key={el}>
-                        {el}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className={styles.selectGroup}>
-                  <label htmlFor='friends'>Paid By</label>
-                  <select
-                    style={
-                      errors?.paidBy
-                        ? { borderBottom: '2px solid var(--clr-danger)' }
-                        : { borderBottom: '2px solid var(--clr-primary)' }
-                    }
-                    name='friends'
-                    id='friends'
-                    {...register('paidBy', {
-                      required: {
-                        value: true,
-                        message: 'Paid by is mandatory',
-                      },
-                    })}
-                  >
-                    <option value=''>Select</option>
-                    {friends?.map((el) => (
-                      <option value={el} key={el}>
-                        {el}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className={styles.buttonGroup}>
-                  <button type='reset'>Reset</button>
-                  <button type='submit'>
-                    {isAddingExpense ? <SmallSpinner /> : 'Add'}
-                  </button>
-                </div>
-              </form>
+                )}
+                {showAddExpenseForm ? (
+                  <AiFillCloseCircle
+                    size={20}
+                    onClick={handleShowAddExpenseForm}
+                    fill='var(--clr-danger)'
+                  />
+                ) : (
+                  <AiFillPlusCircle
+                    size={20}
+                    onClick={handleShowAddExpenseForm}
+                    fill='hsl(var(--clr-secondary-hsl), .7)'
+                  />
+                )}
+              </span>
             </div>
-          )}
 
-          {expenseData.length > 0 && (
-            <div className={styles.expenseContainer}>
-              <div
-                className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
-              >
-                <span>Expense</span>
-                <span>Amount</span>
-                <span>Paid By</span>
+            {expenseData?.map((el) => (
+              <div key={el.expId} className={styles.expenseItem}>
+                <span>{el.expenseName}</span>
+                <span>{formatPrice(el.amount)}</span>
+                <span>{el.paidBy}</span>
                 <span className={styles.expenseButtonGroup}>
-                  {showSummary ? (
-                    <AiFillCloseCircle
-                      size={20}
-                      onClick={handleShowSummary}
-                      fill='var(--clr-danger)'
-                    />
+                  <AiFillEdit size={18} />
+
+                  {el.expId === deletingEl ? (
+                    <SmallSpinner />
                   ) : (
-                    <BiSolidReport
-                      size={20}
-                      onClick={handleShowSummary}
-                      fill='var(--clr-primary)'
-                    />
-                  )}
-                  {showAddExpenseForm ? (
-                    <AiFillCloseCircle
-                      size={20}
-                      onClick={handleShowAddExpenseForm}
-                      fill='var(--clr-danger)'
-                    />
-                  ) : (
-                    <AiFillPlusCircle
-                      size={20}
-                      onClick={handleShowAddExpenseForm}
-                      fill='hsl(var(--clr-secondary-hsl), .7)'
+                    <AiFillDelete
+                      onClick={() => handleDelete(el.expId)}
+                      size={18}
                     />
                   )}
                 </span>
               </div>
+            ))}
 
-              {expenseData?.map((el) => (
-                <div key={el.expId} className={styles.expenseItem}>
-                  <span>{el.expenseName}</span>
-                  <span>{formatPrice(el.amount)}</span>
-                  <span>{el.paidBy}</span>
-                  <span className={styles.expenseButtonGroup}>
-                    <AiFillEdit size={18} />
-
-                    {el.expId === deletingEl ? (
-                      <SmallSpinner />
-                    ) : (
-                      <AiFillDelete
-                        onClick={() => handleDelete(el.expId)}
-                        size={18}
-                      />
-                    )}
-                  </span>
-                </div>
-              ))}
-
-              <div
-                className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
-              >
-                <span>Total</span>
-                <span>{formatPrice(total)}</span>
-              </div>
+            <div
+              className={`${styles.expenseItem} ${styles.expenseItemHeader}`}
+            >
+              <span>Total</span>
+              <span>{formatPrice(total)}</span>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
