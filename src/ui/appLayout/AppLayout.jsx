@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AiOutlineSetting } from 'react-icons/ai';
 
@@ -7,10 +7,12 @@ import styles from './AppLayout.module.css';
 import BackBtn from '../backBtn/BackBtn';
 
 function AppLayout() {
+  const isHomePage = useLocation().pathname === '/home';
+
   return (
     <>
       <Toaster />
-      <BackBtn size={24} />
+      {!isHomePage && <BackBtn size={24} />}
       <span className={styles.settingIcon}>
         <AiOutlineSetting size={26} />
       </span>
