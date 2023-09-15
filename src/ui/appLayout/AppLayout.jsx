@@ -18,7 +18,7 @@ function AppLayout() {
       </span>
       <main className={styles.main}>
         <div className={styles.heading}>
-          <h1>Travel Trip</h1>
+          <h1>Travel</h1>
         </div>
         <div className={styles.container}>
           <Outlet />

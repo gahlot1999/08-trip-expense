@@ -36,7 +36,7 @@ function AddTrip() {
       return;
     }
 
-    if (tripPin.length > 4) {
+    if (tripPin.length > 4 || tripPin.length < 4) {
       toast.error('Trip pin must be of 4 digit');
       return;
     }
